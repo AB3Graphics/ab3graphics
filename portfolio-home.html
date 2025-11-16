@@ -1,0 +1,620 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Alexander Byrd III – AB3 Graphics</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Graphic Design • Animation • Marketing • Print • Photography" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-deep: #021f3b;
+      --bg-mid:  #034c93;
+      --bg-light:#0da5ff;
+      --accent:  #50e3ff;
+      --accent-soft:#88e5ff;
+      --text-main:#e9f6ff;
+      --text-muted:#b7d4ef;
+      --chip-bg: rgba(3, 76, 147, 0.7);
+      --card-bg: rgba(0, 17, 40, 0.85);
+      --border-soft: rgba(187, 233, 255, 0.4);
+      --shadow-soft: 0 18px 50px rgba(0,0,0,0.45);
+      --round-xl: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #0da5ff 0, #02152b 45%, #010814 100%);
+      color: var(--text-main);
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 32px 16px;
+      overflow-x: hidden;
+    }
+
+    /* ===== LAYOUT WRAPPER ===== */
+
+    .resume-shell {
+      position: relative;
+      max-width: 1100px;
+      width: 100%;
+      min-height: 680px;
+      background: linear-gradient(135deg, rgba(2,31,59,0.96), rgba(4,68,129,0.98));
+      border-radius: 28px;
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(250px, 290px) minmax(0, 1fr);
+      overflow: hidden;
+      border: 1px solid rgba(144, 219, 255, 0.4);
+    }
+
+    /* Animated edge strip */
+    .resume-shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      width: 60px;
+      background: linear-gradient(180deg,
+        #c6f7ff 0%,
+        #70dcff 15%,
+        #0da5ff 35%,
+        #034c93 60%,
+        #021f3b 100%
+      );
+      background-size: 100% 300%;
+      animation: waveEdge 14s linear infinite;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    @keyframes waveEdge {
+      0% { transform: translateY(-40%); }
+      50% { transform: translateY(15%); }
+      100% { transform: translateY(-40%); }
+    }
+
+    /* Floating bubbles in background */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.3);
+      background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.65), transparent 55%);
+      opacity: 0.25;
+      animation: floatUp 22s linear infinite;
+      pointer-events: none;
+      filter: blur(0.3px);
+    }
+    .bubble:nth-child(1) { width: 110px; height:110px; left: 12%; bottom:-140px; animation-delay: -4s; }
+    .bubble:nth-child(2) { width: 70px; height: 70px; left: 45%; bottom:-120px; animation-delay: -10s; }
+    .bubble:nth-child(3) { width: 90px; height: 90px; right:10%; bottom:-160px; animation-delay: -16s; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) translateX(0); opacity:0; }
+      10% { opacity:0.3; }
+      60% { opacity:0.3; }
+      100% { transform: translateY(-130vh) translateX(-20px); opacity:0; }
+    }
+
+    /* ===== SIDEBAR ===== */
+
+    .sidebar {
+      position: relative;
+      padding: 28px 24px 32px 80px;
+      background: radial-gradient(circle at top, rgba(13,165,255,0.3), rgba(2,31,59,0.95));
+      border-right: 1px solid var(--border-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .logo-circle {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #ffffff, #8ae8ff 40%, #0362bc 80%);
+      box-shadow: 0 0 0 4px rgba(144,219,255,0.5), 0 0 20px rgba(12,190,255,0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: #01305c;
+      font-size: 15px;
+      text-transform: uppercase;
+    }
+
+    .brand-text h1 {
+      font-size: 20px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      line-height: 1.2;
+    }
+
+    .brand-text span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      margin-top: 3px;
+    }
+
+    .sidebar-section {
+      margin-top: 10px;
+    }
+
+    .sidebar-title {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+      border-radius: 999px;
+      margin-bottom: 10px;
+    }
+
+    .contact-list,
+    .detail-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .contact-list li + li,
+    .detail-list li + li {
+      margin-top: 6px;
+    }
+
+    .contact-list strong {
+      display: inline-block;
+      width: 72px;
+      font-weight: 600;
+      color: var(--accent-soft);
+    }
+
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .skill-chip {
+      font-size: 11px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: var(--chip-bg);
+      border: 1px solid rgba(144, 219, 255, 0.5);
+      color: var(--accent-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: default;
+      white-space: nowrap;
+    }
+
+    .skill-chip:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
+      background: rgba(13,165,255,0.9);
+      color: #041322;
+    }
+
+    /* ===== MAIN CONTENT ===== */
+
+    .main {
+      position: relative;
+      padding: 32px 32px 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .hero {
+      border-radius: var(--round-xl);
+      padding: 20px 22px;
+      background: linear-gradient(135deg, rgba(13,165,255,0.25), rgba(1,6,23,0.9));
+      border: 1px solid rgba(171, 230, 255, 0.55);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+
+    .hero-topline {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 8px;
+    }
+
+    .hero-name {
+      font-size: clamp(28px, 3vw, 34px);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .hero-tagline {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .hero-subline {
+      font-size: 13px;
+      margin-top: 10px;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    .section {
+      background: var(--card-bg);
+      border-radius: var(--round-xl);
+      padding: 18px 22px 18px 22px;
+      border: 1px solid rgba(102, 184, 230, 0.55);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.4);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+    }
+
+    .section-header span {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .experience-item + .experience-item {
+      border-top: 1px solid rgba(120, 181, 225, 0.35);
+      margin-top: 14px;
+      padding-top: 12px;
+    }
+
+    .exp-heading {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+
+    .exp-role {
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .exp-company {
+      font-size: 13px;
+      color: var(--accent-soft);
+    }
+
+    .exp-meta {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .exp-list {
+      margin-top: 6px;
+      padding-left: 18px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .exp-list li + li {
+      margin-top: 4px;
+    }
+
+    .edu-list {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .edu-item + .edu-item {
+      margin-top: 10px;
+    }
+
+    .edu-title {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* ===== REVEAL ANIMATIONS ===== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media (max-width: 860px) {
+      body {
+        padding: 16px;
+      }
+      .resume-shell {
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .resume-shell::before {
+        width: 100%;
+        height: 32px;
+        top: 0;
+        left: 0;
+        background: linear-gradient(90deg,
+          #c6f7ff 0%,
+          #70dcff 15%,
+          #0da5ff 35%,
+          #034c93 60%,
+          #021f3b 100%
+        );
+        background-size: 300% 100%;
+        animation: waveEdgeMobile 16s linear infinite;
+      }
+      @keyframes waveEdgeMobile {
+        0% { transform: translateX(-40%); }
+        50% { transform: translateX(15%); }
+        100% { transform: translateX(-40%); }
+      }
+      .sidebar {
+        padding: 56px 18px 24px 18px;
+      }
+      .main {
+        padding: 18px 18px 24px 18px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand-text h1 {
+        font-size: 16px;
+        letter-spacing: 0.12em;
+      }
+      .brand-text span {
+        letter-spacing: 0.16em;
+      }
+      .logo-circle {
+        width: 60px;
+        height: 60px;
+      }
+      .hero {
+        padding: 16px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="resume-shell">
+  <!-- background bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand-logo reveal">
+      <div class="logo-circle">AB3</div>
+      <div class="brand-text">
+        <h1>AB3 Graphics</h1>
+        <span>Design • Animation • Print</span>
+      </div>
+    </div>
+
+    <section class="sidebar-section reveal">
+      <h2 class="sidebar-title">Contact</h2>
+      <div class="divider"></div>
+      <ul class="contact-list">
+        <li><strong>Phone</strong> (504) 812-2056</li>
+        <li><strong>Email</strong> aby3design@gmail.com</li>
+        <li><strong>Location</strong> Dallas, TX</li>
+        <li><strong>Portfolio</strong> github.com/your-username</li>
+        <li><strong>LinkedIn</strong> linkedin.com/in/alexander-byrd-iii</li>
+      </ul>
+    </section>
+
+    <section class="sidebar-section reveal">
+      <h2 class="sidebar-title">Software & Skills</h2>
+      <div class="divider"></div>
+
+      <p style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.16em;margin-bottom:4px;">Marketing & Email Systems</p>
+      <div class="skills-grid">
+        <span class="skill-chip">Mailchimp</span>
+        <span class="skill-chip">MailerLite</span>
+        <span class="skill-chip">GA4</span>
+        <span class="skill-chip">Semrush</span>
+        <span class="skill-chip">Wix</span>
+        <span class="skill-chip">WordPress / Elementor</span>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.16em;margin:10px 0 4px;">Programming Languages</p>
+      <div class="skills-grid">
+        <span class="skill-chip">HTML</span>
+        <span class="skill-chip">CSS</span>
+        <span class="skill-chip">JavaScript</span>
+        <span class="skill-chip">Python</span>
+      </div>
+
+      <p style="font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.16em;margin:10px 0 4px;">Creative & Production</p>
+      <div class="skills-grid">
+        <span class="skill-chip">Adobe Illustrator</span>
+        <span class="skill-chip">Photoshop</span>
+        <span class="skill-chip">InDesign</span>
+        <span class="skill-chip">After Effects</span>
+        <span class="skill-chip">Blender</span>
+        <span class="skill-chip">KeyShot</span>
+        <span class="skill-chip">Large-Format Print</span>
+        <span class="skill-chip">Prepress</span>
+      </div>
+    </section>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+    <section class="hero reveal">
+      <div class="hero-topline">Portfolio Landing</div>
+      <h2 class="hero-name">Alexander Byrd, III</h2>
+      <p class="hero-tagline">
+        Graphic Design • Animation • Marketing • Print • Photography
+      </p>
+      <p class="hero-subline">
+        Marketing specialist and creative with experience across spinal medical devices,
+        commercial real estate, and large-format display graphics. Blending technical accuracy
+        with cinematic visuals and print-ready precision.
+      </p>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <h3 class="section-title">Experience</h3>
+        <span>Selected roles</span>
+      </div>
+
+      <article class="experience-item">
+        <div class="exp-heading">
+          <div class="exp-role">Marketing Specialist</div>
+          <div class="exp-company">CTL Amedica • Carrollton, TX</div>
+        </div>
+        <div class="exp-meta">July 2025 – Present</div>
+        <ul class="exp-list">
+          <li>Design digital and print campaigns, sales collateral, and surgeon-focused educational materials across CTL Amedica’s spinal implant portfolio.</li>
+          <li>Research and prepare technical content related to implants, anatomy, and surgical workflows, ensuring accuracy and brand consistency.</li>
+          <li>Partner with marketing, sales, and clinical teams to execute strategic initiatives and produce high-quality creative assets for trade shows and corporate communications.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="exp-heading">
+          <div class="exp-role">Senior Prepress Designer</div>
+          <div class="exp-company">Diesel Displays • Grand Prairie, TX</div>
+        </div>
+        <div class="exp-meta">Sept 2023 – July 2025</div>
+        <ul class="exp-list">
+          <li>Supervised prepress production workflows, ensuring accuracy and consistency for large-scale displays.</li>
+          <li>Improved file-handling procedures to reduce production delays and reprints.</li>
+          <li>Trained prepress staff on advanced layout methods, RIP processes, and error-prevention strategies.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="exp-heading">
+          <div class="exp-role">Graphic Designer</div>
+          <div class="exp-company">Newmark Real Estate • Dallas, TX</div>
+        </div>
+        <div class="exp-meta">May 2022 – July 2023</div>
+        <ul class="exp-list">
+          <li>Created digital and print marketing materials from concept through completion for commercial listings.</li>
+          <li>Developed brochures, site plans, email graphics, and signage aligned with brand guidelines.</li>
+          <li>Collaborated with local and national teams to maintain consistent visual identity.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="exp-heading">
+          <div class="exp-role">Graphics Operator</div>
+          <div class="exp-company">Freeman Graphics • Grand Prairie, TX</div>
+        </div>
+        <div class="exp-meta">March 2021 – April 2022</div>
+        <ul class="exp-list">
+          <li>Managed wide-format production, ensuring print accuracy and color consistency.</li>
+          <li>Prepared and optimized artwork for various substrates and finishing processes.</li>
+        </ul>
+      </article>
+
+      <article class="experience-item">
+        <div class="exp-heading">
+          <div class="exp-role">Print Solutions Assistant</div>
+          <div class="exp-company">Mimaki USA • Los Angeles, CA</div>
+        </div>
+        <div class="exp-meta">Oct 2019 – Jan 2021</div>
+        <ul class="exp-list">
+          <li>Demonstrated wide-format printer capabilities at exhibitions nationwide.</li>
+          <li>Produced creative samples to support sales objectives and print education.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-header">
+        <h3 class="section-title">Education</h3>
+        <span>In progress & completed</span>
+      </div>
+      <ul class="edu-list">
+        <li class="edu-item">
+          <div class="edu-title">Dallas County Community College District • Dallas, TX</div>
+          <div>Certificate, Animation – Graduating May 2026</div>
+        </li>
+        <li class="edu-item">
+          <div class="edu-title">Dallas County Community College District • Dallas, TX</div>
+          <div>Skills Achievement Award, Web Development – Graduated Dec 2025</div>
+        </li>
+        <li class="edu-item">
+          <div class="edu-title">Delgado Community College • New Orleans, LA</div>
+          <div>A.A.S., Graphic Design – Graduated Dec 2018</div>
+        </li>
+      </ul>
+    </section>
+  </main>
+</div>
+
+<script>
+  // Simple reveal-on-scroll using IntersectionObserver
+  const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.18
+  });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
