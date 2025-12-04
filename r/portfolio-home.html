@@ -1,5 +1,3 @@
-Please incorporate the google tag properly in the code below:
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,6 +6,16 @@ Please incorporate the google tag properly in the code below:
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Graphic Design • Animation • Marketing • Print • Photography" />
 
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-FLD2HWFJEG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-FLD2HWFJEG');
+  </script>
+  
   <!--
     ============================================================
     AB3 PORTFOLIO TEMPLATE – QUICK GUIDE
@@ -550,6 +558,113 @@ Please incorporate the google tag properly in the code below:
     }
 
     /* PORTFOLIO */
+
+/* 1. Make the project panel the same width as the intro/outcome cards */
+.portfolio-panel {
+  /* you probably already have margin etc., this just ensures full width inside */
+}
+
+.portfolio-layout {
+  width: 100%;
+}
+
+.portfolio-primary {
+  width: 100%;
+  max-width: 100%;        /* removes any narrower max-width */
+}
+
+/* If you have a max-width on .mini-card or .portfolio-secondary-grid,
+   and want the project content to match it exactly, you can also do: */
+.portfolio-secondary-grid,
+.portfolio-layout {
+  max-width: 960px;       /* match your existing intro card width */
+  margin: 0 auto;
+}
+
+/* 2. Center the group of arrow buttons in the intro mini-card */
+.portfolio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.portfolio-controls .portfolio-arrow {
+  flex: 0 0 auto;
+}
+
+/* 3. Add breathing room before the Outcome panel and inside it */
+.mini-card-outcome {
+  margin-top: 2rem;       /* space between last project and outcome card */
+  padding: 1.5rem 1.75rem;
+}
+
+/* 4. Style for the new descriptive paragraph under the headline */
+.portfolio-meta-desc {
+  margin: 0.5rem 0 1.5rem;
+  max-width: 60rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(200, 230, 255, 0.85); /* subtle, matches your UI vibe */
+}
+
+/* Make the mini-card stack define the width (all three match) */
+.portfolio-secondary-grid {
+  max-width: 960px;      /* match whatever width your intro card uses */
+  margin: 0 auto;
+}
+
+/* Center the arrow button group (unchanged behavior, just reaffirmed) */
+.portfolio-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+/* Make the inner project layout fill the mini-card and lose the extra box */
+
+.mini-card-projects {
+  padding: 1.75rem; /* same feel as other mini-cards */
+}
+
+/* Inside the project mini-card, treat layout as a simple block column */
+.mini-card-projects .portfolio-layout {
+  display: block;     /* kill any side-by-side flex if it existed */
+  margin: 0;
+  width: 100%;
+}
+
+/* Remove the inner card look and force full width */
+.mini-card-projects .portfolio-primary {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;         /* mini-card already provides padding */
+  background: none;   /* remove inner panel background */
+  border-radius: 0;   /* remove inner rounded corners */
+  box-shadow: none;   /* no double glow */
+}
+
+/* Keep nice spacing between the two project blocks */
+.mini-card-projects .portfolio-project + .portfolio-project {
+  margin-top: 1.75rem;
+}
+
+
+/* Project card inherits mini-card look; just subtle spacing inside */
+.mini-card-projects .portfolio-project + .portfolio-project {
+  margin-top: 1.75rem;
+}
+
+/* Outcome card should behave like any other mini-card (no extra margin hacks) */
+.mini-card-outcome {
+  margin-top: 0;   /* spacing comes from grid gap now */
+}
+
+
     .portfolio-shell {
       margin-top: 6px;
     }
@@ -1135,6 +1250,22 @@ Please incorporate the google tag properly in the code below:
         transition: none !important;
       }
     }
+  /* FINAL OVERRIDES: remove inner rectangle inside the project mini-card */
+.mini-card-projects .portfolio-layout {
+  display: block;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.mini-card-projects .portfolio-primary {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
   </style>
 </head>
 
@@ -1437,7 +1568,6 @@ Please incorporate the google tag properly in the code below:
   </button>
 </div>
 
-
 <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 1 ==================== -->
 <div class="portfolio-panel"
      data-category="ctl"
@@ -1453,8 +1583,17 @@ Please incorporate the google tag properly in the code below:
     </div>
   </div>
 
-  <!-- ================= INTRODUCTORY PANEL (TOP) ================= -->
+  <!-- DESCRIPTION UNDER HEADLINE -->
+  <p class="portfolio-meta-desc">
+    Integrated NASS 2025 tradeshow work, connecting QR-driven happy hour invitations,
+    GA4 landing pages, and large-format booth graphics into one cohesive campaign
+    narrative that’s easy to track and easy to read from aisle distance.
+  </p>
+
+  <!-- ================= ALL PANELS: INTRO / PROJECTS / OUTCOME ================= -->
   <div class="portfolio-secondary-grid">
+
+    <!-- INTRODUCTORY PANEL -->
     <div class="mini-card">
       <div class="mini-card-title">Analytics</div>
       <strong>QR → GA4 funnel</strong>
@@ -1462,165 +1601,169 @@ Please incorporate the google tag properly in the code below:
         Landing sections planned around key GA4 events like page views, scroll depth,
         PDF downloads, and RSVP clicks.
       </p>
+
+      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS) -->
+      <div class="portfolio-controls">
+        <!-- PROJECT NAV -->
+        <button class="portfolio-arrow" data-dir="prev">
+          <span class="icon">←</span>
+          <span class="label">Previous Project</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="next">
+          <span class="icon">→</span>
+          <span class="label">Next Project</span>
+        </button>
+
+        <!-- CAMPAIGN NAV -->
+        <button class="portfolio-arrow" data-dir="campaign-prev">
+          <span class="icon">↑</span>
+          <span class="label">Previous Campaign</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="campaign-next">
+          <span class="icon">↓</span>
+          <span class="label">Next Campaign</span>
+        </button>
+
+        <!-- EMPLOYER / JOB NAV -->
+        <button class="portfolio-arrow" data-dir="panel-prev">
+          <span class="icon">«</span>
+          <span class="label">Previous Employer</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="panel-next">
+          <span class="icon">»</span>
+          <span class="label">Next Employer</span>
+        </button>
+      </div>
+      <!-- END NAV BAR -->
     </div>
-  </div>
-  <!-- ================= END INTRO PANEL ================= -->
+    <!-- ================= END INTRO PANEL ================= -->
 
-  <!-- ================= NAVIGATION BAR (CENTERED, 6 BUTTONS) ================= -->
-  <div class="portfolio-controls">
-    <!-- PROJECT NAV -->
-    <button class="portfolio-arrow" data-dir="prev">
-      <span class="icon">←</span>
-      <span class="label">Previous Project</span>
-    </button>
+    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
+    <div class="mini-card mini-card-projects">
+      <div class="portfolio-layout">
+        <div class="portfolio-primary">
 
-    <button class="portfolio-arrow" data-dir="next">
-      <span class="icon">→</span>
-      <span class="label">Next Project</span>
-    </button>
+          <!-- PROJECT BLOCK 1 -->
+          <div class="portfolio-project">
+            <h4>2025 NASS Campaign – KLIMT™ Booth Invites</h4>
+            <p>
+              Concepted and produced a cohesive NASS 2025 invitation series for CTL Amedica,
+              tying together neon “spine-in-a-glass” visuals with KLIMT™ implant imagery.
+              These invites live at the booth, in emails, and on social media.
+            </p>
+            <div>
+              <small>
+                Roles: Art direction, campaign concept, 3D implant integration, layout design,
+                print-ready prep for handouts, table tents, and email-safe versions.
+              </small>
+            </div>
 
-    <!-- CAMPAIGN NAV -->
-    <button class="portfolio-arrow" data-dir="campaign-prev">
-      <span class="icon">↑</span>
-      <span class="label">Previous Campaign</span>
-    </button>
+            <div class="portfolio-thumb-bar">
+              <img class="portfolio-thumb active"
+                   src="images/2025 NASS INVITATION - 1.png"
+                   data-full="images/2025 NASS INVITATION - 1.png"
+                   alt="KLIMT NASS invitation teal"
+                   data-caption="2025 NASS Happy Hour invitation – teal neon variant.">
 
-    <button class="portfolio-arrow" data-dir="campaign-next">
-      <span class="icon">↓</span>
-      <span class="label">Next Campaign</span>
-    </button>
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS INVITATION - 2.png"
+                   data-full="images/2025 NASS INVITATION - 2.png"
+                   alt="KLIMT NASS invitation magenta"
+                   data-caption="Magenta neon variant.">
 
-    <!-- EMPLOYER / JOB NAV (SHUFFLES JOB FILTERS) -->
-    <button class="portfolio-arrow" data-dir="panel-prev">
-      <span class="icon">«</span>
-      <span class="label">Previous Employer</span>
-    </button>
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS INVITATION - 3.png"
+                   data-full="images/2025 NASS INVITATION - 3.png"
+                   alt="KLIMT NASS invitation gold"
+                   data-caption="Gold neon variant.">
+            </div>
+          </div>
 
-    <button class="portfolio-arrow" data-dir="panel-next">
-      <span class="icon">»</span>
-      <span class="label">Next Employer</span>
-    </button>
-  </div>
-  <!-- ================= END NAVIGATION BAR ================= -->
+          <!-- PROJECT BLOCK 2 -->
+          <div class="portfolio-project">
+            <h4>2025 NASS Campaign – Booth Panel System</h4>
+            <p>
+              Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF.
+              Each has its own hero image, color identity, and strong aisle-distance legibility.
+            </p>
+            <div>
+              <small>
+                Roles: Art direction, 3D integration, typographic hierarchy,
+                prepress for large-format substrates.
+              </small>
+            </div>
 
-  <!-- ================= PROJECT CONTENT ================= -->
-  <div class="portfolio-layout">
-    <div class="portfolio-primary">
+            <div class="portfolio-thumb-bar">
+              <img class="portfolio-thumb active"
+                   src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                   data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                   alt="Monet booth panel"
+                   data-caption="Monet ALIF booth panel — blue gradient hero.">
 
-      <!-- PROJECT BLOCK 1 -->
-      <div class="portfolio-project">
-        <h4>2025 NASS Campaign – KLIMT™ Booth Invites</h4>
-        <p>
-          Concepted and produced a cohesive NASS 2025 invitation series for CTL Amedica,
-          tying together neon “spine-in-a-glass” visuals with KLIMT™ implant imagery.
-          These invites live at the booth, in emails, and on social media.
-        </p>
-        <div>
-          <small>
-            Roles: Art direction, campaign concept, 3D implant integration, layout design,
-            print-ready prep for handouts, table tents, and email-safe versions.
-          </small>
-        </div>
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                   data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                   alt="KLIMT booth panel"
+                   data-caption="KLIMT booth panel — neon spine-in-a-glass motif.">
 
-        <div class="portfolio-thumb-bar">
-          <img class="portfolio-thumb active"
-               src="images/2025 NASS INVITATION - 1.png"
-               data-full="images/2025 NASS INVITATION - 1.png"
-               alt="KLIMT NASS invitation teal"
-               data-caption="2025 NASS Happy Hour invitation – teal neon variant.">
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                   data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                   alt="Mondrian booth panels"
+                   data-caption="Mondrian ALIF modular grids.">
 
-          <img class="portfolio-thumb"
-               src="images/2025 NASS INVITATION - 2.png"
-               data-full="images/2025 NASS INVITATION - 2.png"
-               alt="KLIMT NASS invitation magenta"
-               data-caption="Magenta neon variant.">
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                   data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                   alt="Wide Mondrian panel"
+                   data-caption="Wide Mondrian bridging panel.">
 
-          <img class="portfolio-thumb"
-               src="images/2025 NASS INVITATION - 3.png"
-               data-full="images/2025 NASS INVITATION - 3.png"
-               alt="KLIMT NASS invitation gold"
-               data-caption="Gold neon variant.">
-        </div>
-      </div>
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                   data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                   alt="Booth 3D"
+                   data-caption="3D booth overview.">
 
-      <!-- PROJECT BLOCK 2 -->
-      <div class="portfolio-project">
-        <h4>2025 NASS Campaign – Booth Panel System</h4>
-        <p>
-          Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF.
-          Each has its own hero image, color identity, and strong aisle-distance legibility.
-        </p>
-        <div>
-          <small>
-            Roles: Art direction, 3D integration, typographic hierarchy,
-            prepress for large-format substrates.
-          </small>
-        </div>
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS - Trade Show Booth - 01.jpeg"
+                   data-full="images/2025 NASS - Trade Show Booth - 01.jpeg"
+                   alt="Booth angle"
+                   data-caption="Angle view of hero wall.">
 
-        <div class="portfolio-thumb-bar">
-          <img class="portfolio-thumb active"
-               src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-               data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-               alt="Monet booth panel"
-               data-caption="Monet ALIF booth panel — blue gradient hero.">
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS - Trade Show Booth - 02.jpeg"
+                   data-full="images/2025 NASS - Trade Show Booth - 02.jpeg"
+                   alt="Booth Mondrian"
+                   data-caption="Mondrian ALIF modular side.">
 
-          <img class="portfolio-thumb"
-               src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-               data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-               alt="KLIMT booth panel"
-               data-caption="KLIMT booth panel — neon spine-in-a-glass motif.">
+              <img class="portfolio-thumb"
+                   src="images/2025 NASS - Trade Show Booth - 03.jpeg"
+                   data-full="images/2025 NASS - Trade Show Booth - 03.jpeg"
+                   alt="Booth overview"
+                   data-caption="Full booth system view.">
+            </div>
+          </div>
 
-          <img class="portfolio-thumb"
-               src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-               data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-               alt="Mondrian booth panels"
-               data-caption="Mondrian ALIF modular grids.">
-
-          <img class="portfolio-thumb"
-               src="images/2025 NASS Booth - Panel 5 - 130x15.png"
-               data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
-               alt="Wide Mondrian panel"
-               data-caption="Wide Mondrian bridging panel.">
-
-          <img class="portfolio-thumb"
-               src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-               data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-               alt="Booth 3D"
-               data-caption="3D booth overview.">
-
-          <img class="portfolio-thumb"
-               src="images/2025 NASS - Trade Show Booth - 01.jpeg"
-               data-full="images/2025 NASS - Trade Show Booth - 01.jpeg"
-               alt="Booth angle"
-               data-caption="Angle view of hero wall.">
-
-          <img class="portfolio-thumb"
-               src="images/2025 NASS - Trade Show Booth - 02.jpeg"
-               data-full="images/2025 NASS - Trade Show Booth - 02.jpeg"
-               alt="Booth Mondrian"
-               data-caption="Mondrian ALIF modular side.">
-
-          <img class="portfolio-thumb"
-               src="images/2025 NASS - Trade Show Booth - 03.jpeg"
-               data-full="images/2025 NASS - Trade Show Booth - 03.jpeg"
-               alt="Booth overview"
-               data-caption="Full booth system view.">
-        </div>
-      </div>
-
-      <!-- ================= CONCLUSION PANEL (INSIDE MAIN LAYOUT) ================= -->
-      <div class="mini-card mini-card-outcome">
-        <div class="mini-card-title">Outcome</div>
-        <strong>Campaign impact</strong>
-        <p>
-          Strengthened CTL’s NASS identity with a unified neon visual language applied to
-          print, booth, email, and QR analytics-driven assets.
-        </p>
-      </div>
-      <!-- ================= END CONCLUSION PANEL ================= -->
-
+        </div> <!-- end .portfolio-primary -->
+      </div>   <!-- end .portfolio-layout -->
     </div>
-  </div> <!-- end .portfolio-layout -->
+    <!-- ================= END PROJECT PANEL ================= -->
+
+    <!-- ================= OUTCOME PANEL (MATCH INTRO STYLE) ================= -->
+    <div class="mini-card mini-card-outcome">
+      <div class="mini-card-title">Outcome</div>
+      <strong>Campaign impact</strong>
+      <p>
+        Strengthened CTL’s NASS identity with a unified neon visual language applied to
+        print, booth, email, and QR analytics-driven assets.
+      </p>
+    </div>
+    <!-- ================= END OUTCOME PANEL ================= -->
+
+  </div> <!-- end .portfolio-secondary-grid -->
 
 </div> <!-- end .portfolio-panel -->
 
