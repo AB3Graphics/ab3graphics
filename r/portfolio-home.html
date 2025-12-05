@@ -226,19 +226,26 @@
       filter: blur(2px);
     }
 
-    .bubble:nth-child(2) {
-      width: 720px;
-      height: 720px;
-      opacity: 0.45;
-      filter: blur(4px);
-    }
+.bubble-1 {
+  width: 520px;
+  height: 520px;
+  opacity: 0.8;
+  filter: blur(2px);
+}
 
-    .bubble:nth-child(3) {
-      width: 980px;
-      height: 980px;
-      opacity: 0.28;
-      filter: blur(8px);
-    }
+.bubble-2 {
+  width: 720px;
+  height: 720px;
+  opacity: 0.45;
+  filter: blur(4px);
+}
+
+.bubble-3 {
+  width: 980px;
+  height: 980px;
+  opacity: 0.28;
+  filter: blur(8px);
+}
 
     .sidebar {
       position: relative;
@@ -594,6 +601,37 @@
   flex: 0 0 auto;
 }
 
+
+/* top nav row inside the mini-card */
+.portfolio-controls,
+.portfolio-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* keep the footer row centered at the bottom of a mini-card */
+.portfolio-footer-row {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  margin-top: 0;
+}
+
+/* Button row container – single horizontal line */
+.portfolio-controls,
+.portfolio-footer-row {
+  display: flex;
+  flex-wrap: nowrap;      /* key: keep all 6 on one row */
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+}
+
 /* 3. Add breathing room before the Outcome panel and inside it */
 .mini-card-outcome {
   margin-top: 2rem;       /* space between last project and outcome card */
@@ -924,36 +962,94 @@
       margin: 0;
     }
 
-    .portfolio-arrow {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      padding: 0.45rem 1.15rem;
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 255, 255, 0.7);
-      background: radial-gradient(circle at 20% 0,
-              rgba(0, 255, 255, 0.28),
-              rgba(0, 20, 40, 0.95));
-      color: #e9fbff;
-      font-size: 0.8rem;
-      letter-spacing: 0.02em;
-      cursor: pointer;
-      box-shadow: var(--arrow-glow);
-      font-size: 0; /* hide any text content; icon only */
-      transition:
-        transform 0.18s ease-out,
-        box-shadow 0.18s ease-out,
-        background 0.18s ease-out,
-        border-color 0.18s ease-out;
-    }
+/* NAV BUTTONS – compact pill size */
+.portfolio-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
 
-    .portfolio-arrow span.icon {
-      font-size: 15px;
-      text-shadow: 0 0 8px rgba(80, 227, 255, 0.9);
-    }
+  /* smaller pill */
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+
+  /* existing glow look */
+  border: 1px solid rgba(0, 255, 255, 0.7);
+  background: radial-gradient(
+    circle at 20% 0,
+    rgba(0, 255, 255, 0.28),
+    rgba(0, 20, 40, 0.95)
+  );
+  color: #e9fbff;
+  box-shadow: var(--arrow-glow);
+
+  /* smaller type so 6 fit on one row */
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  cursor: pointer;
+  transition:
+    transform 0.18s ease-out,
+    box-shadow 0.18s ease-out,
+    background 0.18s ease-out,
+    border-color 0.18s ease-out;
+}
+
+/* Footer button row (all nav buttons) */
+.portfolio-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin-top: 1.25rem;
+}
+
+/* Smaller pill buttons */
+.portfolio-arrow {
+  font-size: 0.75rem;          /* smaller text */
+  padding: 0.30rem 0.60rem;    /* tighter padding */
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  line-height: 1.1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+/* Icon inside the button (arrow glyphs) */
+.portfolio-arrow .icon {
+  font-size: 0.8em;
+}
+
+/* Hover / focus animation stays but feels lighter because of the smaller size */
+.portfolio-arrow:hover,
+.portfolio-arrow:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.35);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+
+.portfolio-arrow .icon {
+  font-size: 12px;   /* slightly larger than text */
+  line-height: 1;
+  text-shadow: 0 0 6px rgba(80, 227, 255, 0.9);
+}
+
+.portfolio-arrow .label {
+  font-size: 9px;
+}
 
     /* Simple hover / active animation */
     .portfolio-arrow:hover {
@@ -1294,9 +1390,10 @@
   </header>
 
   <div id="top" class="resume-shell">
-    <div class="bubble"></div>
-    <div another-bubble class="bubble"></div>
-    <div third-bubble class="bubble"></div>
+    <div class="bubble bubble-1"></div>
+    <div class="bubble bubble-2"></div>
+    <div class="bubble bubble-3"></div>
+
 
     <aside class="sidebar" id="contact">
       <section class="sidebar-section reveal">
@@ -2570,207 +2667,267 @@
 
 
 
-            <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="2"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 – Present</span>
-                </div>
-              </div>
+      <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 1 ==================== -->
+<div class="portfolio-panel"
+     data-category="ctl"
+     data-campaign="2"
+     data-project="1">
 
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Dynamic QR Landing Pages for Product Lines</h4>
-                    <p>
-                      Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
-                      partner campaigns, optimized for phone-first viewing. Each layout matches
-                      printed collateral while embedding GA4 events and UTM tracking.
-                    </p>
-                  <div>
-                    <small>
-                      Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
-                      QR integration strategy and measurement planning.
-                    </small>
-                  </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        data-full="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        alt="Landing layout aligned with KLIMT invitation"
-                        data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        data-full="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        data-full="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-                      >
-                    </div>
-                  </div>
-                </div>
+  <!-- META -->
+  <div class="portfolio-meta-row">
+    <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
+    <div class="portfolio-meta-right">
+      <span>CTL Amedica</span>
+      <span>2025 – Present</span>
+    </div>
+  </div>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Analytics</div>
-                    <strong>QR → GA4 funnel</strong>
-                    <p>
-                      Landing sections planned around key GA4 events like page views, scroll depth,
-                      PDF downloads, and RSVP clicks.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Structure</div>
-                    <strong>Microsite module system</strong>
-                    <p>
-                      Reusable content blocks for product overview, indications, technique PDFs, and
-                      training media so each product has a consistent story structure.
-                    </p>
-                  </div>
-                </div>
-              </div>
+  <!-- OPTIONAL DESCRIPTION UNDER HEADLINE -->
+  <p class="portfolio-meta-desc">
+    Spin-off layouts and reference sheets built from the same QR + GA4 logic as the core
+    NASS microsites, focused on SpineWave collaboration and product overviews.
+  </p>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
+  <!-- ================= ALL PANELS: INTRO / PROJECT / OUTCOME ================= -->
+  <div class="portfolio-secondary-grid">
 
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
+    <!-- INTRODUCTORY PANEL (WITH 6-BUTTON NAV) -->
+    <div class="mini-card">
+      <div class="mini-card-title">Analytics</div>
+      <strong>QR → GA4 funnel</strong>
+      <p>
+        Landing sections planned around key GA4 events like page views, scroll depth,
+        PDF downloads, and RSVP clicks.
+      </p>
 
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
+      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS – MATCHES CTL CAMPAIGN 1) -->
+      <div class="portfolio-controls">
+        <!-- PROJECT NAV -->
+        <button class="portfolio-arrow" data-dir="prev">
+          <span class="icon">←</span>
+          <span class="label">Previous Project</span>
+        </button>
 
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
+        <button class="portfolio-arrow" data-dir="next">
+          <span class="icon">→</span>
+          <span class="label">Next Project</span>
+        </button>
 
-            <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 3 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="2"
-                 data-project="3">
-              <div class="portfolio-meta-row">
-                <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 – Present</span>
-                </div>
-              </div>
+        <!-- CAMPAIGN NAV -->
+        <button class="portfolio-arrow" data-dir="campaign-prev">
+          <span class="icon">↑</span>
+          <span class="label">Previous Campaign</span>
+        </button>
 
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Dynamic QR Landing Pages for Product Lines</h4>
-                    <p>
-                      Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
-                      partner campaigns, optimized for phone-first viewing. Each layout matches
-                      printed collateral while embedding GA4 events and UTM tracking.
-                    </p>
-                  <div>
-                    <small>
-                      Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
-                      QR integration strategy and measurement planning.
-                    </small>
-                  </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/SpineWave - Monet Overview - Front.png"
-                        data-full="images/SpineWave - Monet Overview - Front.png"
-                        alt="Landing layout aligned with KLIMT invitation"
-                        data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Monet Overview - Back.png"
-                        data-full="images/SpineWave - Monet Overview - Back.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-                      >
-                    </div>
-                  </div>
-                </div>
+        <button class="portfolio-arrow" data-dir="campaign-next">
+          <span class="icon">↓</span>
+          <span class="label">Next Campaign</span>
+        </button>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Analytics</div>
-                    <strong>QR → GA4 funnel</strong>
-                    <p>
-                      Landing sections planned around key GA4 events like page views, scroll depth,
-                      PDF downloads, and RSVP clicks.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Structure</div>
-                    <strong>Microsite module system</strong>
-                    <p>
-                      Reusable content blocks for product overview, indications, technique PDFs, and
-                      training media so each product has a consistent story structure.
-                    </p>
-                  </div>
-                </div>
-              </div>
+        <!-- EMPLOYER / JOB NAV -->
+        <button class="portfolio-arrow" data-dir="panel-prev">
+          <span class="icon">«</span>
+          <span class="label">Previous Employer</span>
+        </button>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
+        <button class="portfolio-arrow" data-dir="panel-next">
+          <span class="icon">»</span>
+          <span class="label">Next Employer</span>
+        </button>
+      </div>
+      <!-- END NAV BAR -->
+    </div>
+    <!-- ================= END INTRO PANEL ================= -->
 
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
+    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
+    <div class="mini-card mini-card-projects">
+      <div class="portfolio-layout">
+        <div class="portfolio-primary">
+          <div class="portfolio-project">
+            <h4>Dynamic QR Landing Pages for Product Lines</h4>
+            <p>
+              Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
+              partner campaigns, optimized for phone-first viewing. Each layout matches
+              printed collateral while embedding GA4 events and UTM tracking.
+            </p>
+            <div>
+              <small>
+                Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
+                QR integration strategy and measurement planning.
+              </small>
+            </div>
 
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
+            <div class="portfolio-thumb-bar">
+              <img
+                class="portfolio-thumb active"
+                src="images/SpineWave - Flyer - 1 - 8.5x11.png"
+                data-full="images/SpineWave - Flyer - 1 - 8.5x11.png"
+                alt="Landing layout aligned with KLIMT invitation"
+                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
+              >
+              <img
+                class="portfolio-thumb"
+                src="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
+                data-full="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
+                alt="Alternate landing layout for Mondrian ALIF"
+                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
+              >
+              <img
+                class="portfolio-thumb"
+                src="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
+                data-full="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
+                alt="Alternate landing layout for Mondrian ALIF"
+                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================= END PROJECT PANEL ================= -->
 
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
+    <!-- ================= OUTCOME PANEL (BOTTOM) ================= -->
+    <div class="mini-card mini-card-outcome">
+      <div class="mini-card-title">Outcome</div>
+      <strong>Extending the microsite system</strong>
+      <p>
+        Took the same QR and analytics logic from the NASS landings and applied it to
+        SpineWave and product-overview collateral, keeping tracking and visual language
+        consistent across brands.
+      </p>
+    </div>
+    <!-- ================= END OUTCOME PANEL ================= -->
 
+  </div> <!-- end .portfolio-secondary-grid -->
+
+</div> <!-- end .portfolio-panel -->
+
+
+       <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 2 ==================== -->
+<div class="portfolio-panel"
+     data-category="ctl"
+     data-campaign="2"
+     data-project="2">
+
+  <!-- META -->
+  <div class="portfolio-meta-row">
+    <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
+    <div class="portfolio-meta-right">
+      <span>CTL Amedica</span>
+      <span>2025 – Present</span>
+    </div>
+  </div>
+
+  <!-- DESCRIPTION UNDER HEADLINE -->
+  <p class="portfolio-meta-desc">
+    Monet overview cards and reference layouts that tie directly into the same QR + GA4
+    funnel as the rest of the NASS ecosystem, tuned for quick-reading surgeons.
+  </p>
+
+  <!-- ================= ALL PANELS: INTRO / PROJECT / OUTCOME ================= -->
+  <div class="portfolio-secondary-grid">
+
+    <!-- INTRODUCTORY PANEL (WITH 6-BUTTON NAV) -->
+    <div class="mini-card">
+      <div class="mini-card-title">Analytics</div>
+      <strong>QR → GA4 funnel</strong>
+      <p>
+        Landing sections planned around key GA4 events like page views, scroll depth,
+        PDF downloads, and RSVP clicks.
+      </p>
+
+      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS – MATCHES CTL CAMPAIGN 1) -->
+      <div class="portfolio-controls">
+        <!-- PROJECT NAV -->
+        <button class="portfolio-arrow" data-dir="prev">
+          <span class="icon">←</span>
+          <span class="label">Previous Project</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="next">
+          <span class="icon">→</span>
+          <span class="label">Next Project</span>
+        </button>
+
+        <!-- CAMPAIGN NAV -->
+        <button class="portfolio-arrow" data-dir="campaign-prev">
+          <span class="icon">↑</span>
+          <span class="label">Previous Campaign</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="campaign-next">
+          <span class="icon">↓</span>
+          <span class="label">Next Campaign</span>
+        </button>
+
+        <!-- EMPLOYER / JOB NAV -->
+        <button class="portfolio-arrow" data-dir="panel-prev">
+          <span class="icon">«</span>
+          <span class="label">Previous Employer</span>
+        </button>
+
+        <button class="portfolio-arrow" data-dir="panel-next">
+          <span class="icon">»</span>
+          <span class="label">Next Employer</span>
+        </button>
+      </div>
+      <!-- END NAV BAR -->
+    </div>
+    <!-- ================= END INTRO PANEL ================= -->
+
+    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
+    <div class="mini-card mini-card-projects">
+      <div class="portfolio-layout">
+        <div class="portfolio-primary">
+          <div class="portfolio-project">
+            <h4>Monet Overview – SpineWave Collaboration</h4>
+            <p>
+              Branded Monet overview cards that echo the implant’s visual hierarchy and
+              lay the groundwork for analytics-ready landing pages and training content.
+            </p>
+            <div>
+              <small>
+                Roles: Layout, content hierarchy, and QR+landing integration strategy
+                for Monet-focused education and marketing.
+              </small>
+            </div>
+
+            <div class="portfolio-thumb-bar">
+              <img
+                class="portfolio-thumb active"
+                src="images/SpineWave - Monet Overview - Front.png"
+                data-full="images/SpineWave - Monet Overview - Front.png"
+                alt="Monet overview front"
+                data-caption="Monet overview card – front panel with implant hero and key positioning statements."
+              >
+              <img
+                class="portfolio-thumb"
+                src="images/SpineWave - Monet Overview - Back.png"
+                data-full="images/SpineWave - Monet Overview - Back.png"
+                alt="Monet overview back"
+                data-caption="Monet overview card – back panel with indications, feature callouts, and QR-driven next steps."
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ================= END PROJECT PANEL ================= -->
+
+    <!-- ================= OUTCOME PANEL (BOTTOM) ================= -->
+    <div class="mini-card mini-card-outcome">
+      <div class="mini-card-title">Outcome</div>
+      <strong>Product-specific story blocks</strong>
+      <p>
+        Gave Monet its own focused storytelling surface that still plugs cleanly into the
+        broader NASS QR and analytics system, making it easier to add new products later.
+      </p>
+    </div>
+    <!-- ================= END OUTCOME PANEL ================= -->
+
+  </div> <!-- end .portfolio-secondary-grid -->
+
+</div> <!-- end .portfolio-panel -->
 
             <!-- ==================== CTL – CAMPAIGN 3 / PROJECT 1 ==================== -->
             <div class="portfolio-panel"
