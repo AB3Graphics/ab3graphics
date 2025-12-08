@@ -22,7 +22,7 @@
     This file is designed so you can:
       • Add entire new PORTFOLIO PANELS by copy/paste.
       • Group work as:
-          JOB (CTL / Diesel / Newmark / Mimaki / Other)
+          JOB (CTL / Diesel / Newmark / Mimaki / Freelance)
             → CAMPAIGN (1, 2, 3…)
               → PROJECT (1, 2, 3…)
 
@@ -41,13 +41,13 @@
           - Event row:    change PROJECT within that campaign.
 
     DATA ATTRIBUTES THAT DRIVE EVERYTHING:
-      data-category = job key (ctl, diesel, newmark, mimaki, other)
+      data-category = job key (ctl, diesel, newmark, mimaki, freelance)
       data-campaign = campaign number for that job (1, 2, 3…)
       data-project  = project number inside that campaign (1, 2, 3…)
 
     To add more work:
       1) COPY an existing <div class="portfolio-panel" ...> block.
-      2) PASTE it below the other panels with the SAME data-category (job).
+      2) PASTE it below the freelance panels with the SAME data-category (job).
       3) UPDATE:
            - data-campaign="X"  (campaign index for that job)
            - data-project="Y"   (project index inside that campaign)
@@ -1195,6 +1195,149 @@
   margin: 0.75rem 0 1.75rem;
 }
 
+/* === CONNECT BOX === */
+
+.connect-box {
+  position: fixed;
+  left: 2rem;
+  bottom: 2rem;
+  max-width: 320px;
+  padding: 1.5rem 1.75rem 1.75rem;
+  border-radius: 18px;
+  background: radial-gradient(circle at top left, #1ae2ff26, #050814 55%, #00040a);
+  box-shadow:
+    0 0 0 1px rgba(75, 245, 255, 0.25),
+    0 0 30px rgba(0, 255, 255, 0.35);
+  color: #f5f7ff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  z-index: 999;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  /* animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation:
+    connect-float-in 0.7s ease-out forwards,
+    connect-glow 3.5s ease-in-out infinite alternate;
+}
+
+.connect-label {
+  letter-spacing: 0.28em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  margin: 0 0 0.5rem;
+  color: #b8d9ff;
+}
+
+.connect-text {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin: 0 0 1.1rem;
+  color: #e5f1ff;
+}
+
+.connect-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.6rem;
+  border-radius: 999px;
+  border: none;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+  background: linear-gradient(135deg, #18c5ff, #33ffcc);
+  color: #02111f;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.15),
+    0 8px 18px rgba(0, 0, 0, 0.6);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-position 0.18s ease;
+  background-size: 150% 150%;
+}
+
+.connect-btn:hover,
+.connect-btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 10px 26px rgba(0, 0, 0, 0.75);
+  outline: none;
+  background-position: 100% 0;
+}
+
+.connect-btn:active {
+  transform: translateY(0);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* Close icon */
+
+.connect-close {
+  position: absolute;
+  top: 0.55rem;
+  right: 0.7rem;
+  font-size: 1.05rem;
+  line-height: 1;
+  border: none;
+  background: transparent;
+  color: #7fa7ff;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 999px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.connect-close:hover,
+.connect-close:focus-visible {
+  background-color: rgba(125, 200, 255, 0.16);
+  color: #ffffff;
+  outline: none;
+}
+
+/* Animations */
+
+@keyframes connect-float-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes connect-glow {
+  from {
+    box-shadow:
+      0 0 0 1px rgba(75, 245, 255, 0.25),
+      0 0 14px rgba(0, 255, 255, 0.25);
+  }
+  to {
+    box-shadow:
+      0 0 0 1px rgba(75, 245, 255, 0.4),
+      0 0 36px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* Optional: make it shrink nicely on small screens */
+
+@media (max-width: 600px) {
+  .connect-box {
+    left: 1rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
+}
   </style>
 </head>
 
@@ -1496,7 +1639,7 @@
                     <button class="nav-pill" data-job="diesel">Diesel Displays</button>
                     <button class="nav-pill" data-job="newmark">Newmark</button>
                     <button class="nav-pill" data-job="mimaki">Mimaki USA</button>
-                    <button class="nav-pill" data-job="other">Freelance</button>
+                    <button class="nav-pill" data-job="freelance">Freelance</button>
                   </div>
 
                   <!-- JOB / CAMPAIGN / EVENT CONTROLS -->
@@ -2321,6 +2464,221 @@
             </div>
           </div>
 
+          <div class="portfolio-panel"
+               data-category="newmark"
+               data-campaign="1"
+               data-project="1">
+<div class="portfolio-meta-row">
+  <div class="portfolio-nav-title">Newmark Real Estate</div>
+  <div class="portfolio-meta-right">
+    <span class="portfolio-nav-title">Property Marketing Sets</span>
+  </div>
+</div>
+
+<p class="portfolio-meta-desc">
+  Integrated print and digital collateral for commercial real estate listings:
+  brochures, site plans, email graphics, and signage designed to keep branding
+  consistent from pitch decks to on-site installations.
+</p>
+
+
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
+              </div>
+
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Happy Hour Invitations</h4>
+                  <p>
+                    Concepted and produced NASS 2025 invitation artwork tying neon cocktails to
+                    KLIMT™ implant imagery. Designed to work both digitally and in print,
+                    with QR pathways to GA4-ready landing pages.
+                  </p>
+                  <small>
+                    Roles: Art direction, campaign concept, 3D implant integration,
+                    layout design, print-ready prep for handouts and email-safe versions.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/desl-color-test.png"
+                           data-full="images/desl-color-test.png"
+                           alt="Color test"
+                           data-caption="Color and value testing used as a baseline for Newmark real estate collateral.">
+                      <div class="portfolio-thumb-caption">
+                        Newmark – base color/value exploration for marketing sets.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/desl-mock-up.svg"
+                           data-full="images/desl-mock-up.svg"
+                           alt="Mockup"
+                           data-caption="Mocked up graphics in a real estate environment to evaluate scale and legibility.">
+                      <div class="portfolio-thumb-caption">
+                        Newmark – signage and wall graphic mockup in context.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="Alternate composition"
+                           data-caption="Alternate composition used as a layout reference.">
+                      <div class="portfolio-thumb-caption">
+                        Layout reference leveraged for brochure and flyer frames.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- OUTCOME CARD -->
+                <div class="mini-card mini-card-outcome">
+                  <div class="mini-card-title">Outcome</div>
+                  <strong>Campaign impact</strong>
+                  <p>
+                    Helped unify Newmark’s print and digital collateral by stress-testing layouts and
+                    colors in realistic environments before committing to runs.
+                  </p>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="Back layout reference"
+                        data-caption="Tight information layout that informed Newmark one-pagers."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Back-of-card layout language repurposed into Newmark one-pagers.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+              <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: mimaki / CAMPAIGN: 1 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="freelance"
+               data-campaign="1"
+               data-project="1">
+<div class="portfolio-meta-row">
+  <div class="portfolio-nav-title">Mimaki USA</div>
+  <div class="portfolio-meta-right">
+    <span class="portfolio-nav-title">Print &amp; Color Demos</span>
+  </div>
+</div>
+
+<p class="portfolio-meta-desc">
+  Demo artwork and test layouts tuned for Mimaki hardware, stressing gradients,
+  neon color, and fine detail so sales and training teams can show exactly what
+  the printers can do across different inks and substrates.
+</p>
+
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
+              </div>
+
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>Print &amp; Color System Demos</h4>
+                  <p>
+                    Used neon-heavy artwork to demo Mimaki print capabilities: gradients, fine detail,
+                    and deep blacks across test substrates and inks.
+                  </p>
+                  <small>
+                    Roles: Prepress setup, color tuning for CMYK and specialty inks,
+                    layout optimization for live demo environments.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/desl-color-test.png"
+                           data-full="images/desl-color-test.png"
+                           alt="Mimaki color test"
+                           data-caption="Color stress test artwork tuned for Mimaki print demos.">
+                      <div class="portfolio-thumb-caption">
+                        Mimaki – neon color stress test for demo prints.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/desl-mock-up.svg"
+                           data-full="images/desl-mock-up.svg"
+                           alt="Mimaki mockup"
+                           data-caption="Graphics mocked into a booth-like setting for demo presentations.">
+                      <div class="portfolio-thumb-caption">
+                        Mimaki – mockup for demo wall and banner graphics.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="Alternate composition"
+                           data-caption="Alternate composition to compare ink sets and substrates.">
+                      <div class="portfolio-thumb-caption">
+                        Alternate layout used to compare inksets and media profiles.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- OUTCOME CARD -->
+                <div class="mini-card mini-card-outcome">
+                  <div class="mini-card-title">Outcome</div>
+                  <strong>Print demo results</strong>
+                  <p>
+                    Enabled clear side-by-side comparisons of lighting, gradients, and fine detail
+                    across Mimaki hardware, supporting sales and training conversations.
+                  </p>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="Back design reference"
+                        data-caption="Compact back-of-card design used as a reference for demo labels."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Label-style layout used as a blueprint for demo descriptions.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!--
             To add more panels:
             - Copy the .portfolio-panel block above
@@ -2329,6 +2687,32 @@
           -->
         </section>
       </div>
+
+      <a href="#"
+        class="section-arrow"
+        aria-label="Back to top"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' }); return false;">
+        ↑
+      </a>
+
+      <!-- CONNECT / LET'S TALK BOX -->
+<div class="connect-box" id="connectBox">
+  <button class="connect-close" aria-label="Close connect panel">&times;</button>
+
+  <p class="connect-label">CONNECT</p>
+
+  <p class="connect-text">
+    Are you a future employer, client, and/or colleague? Let's get in touch.
+  </p>
+
+  <a
+    href="mailto:ab3graphics@gmail.com?subject=Let%27s%20Connect&body=Hi%20Alexander%2C%0D%0A%0D%0A"
+    class="connect-btn"
+  >
+    LET’S TALK ↗
+  </a>
+</div>
+
     </main>
   </div>
 
@@ -2473,19 +2857,19 @@
       const panels = Array.from(document.querySelectorAll('.portfolio-panel'));
       if (!panels.length) return;
 
-      const jobOrder = ['ctl', 'diesel', 'newmark', 'mimaki', 'other'];
+      const jobOrder = ['ctl', 'diesel', 'newmark', 'mimaki', 'freelance'];
       const jobLabels = {
         ctl: 'CTL Amedica',
         diesel: 'Diesel Displays',
         newmark: 'Newmark Real Estate',
         mimaki: 'Mimaki USA',
-        other: 'Other Projects'
+        freelance: 'Freelance Projects'
       };
 
       // Build a map: job -> campaigns -> projects
       const map = {};
       panels.forEach(panel => {
-        const job = panel.dataset.category || 'other';
+        const job = panel.dataset.category || 'freelance';
         const campaign = Number(panel.dataset.campaign || '1');
         const project = Number(panel.dataset.project || '1');
 
@@ -2612,5 +2996,19 @@
       nextEventBtn && nextEventBtn.addEventListener('click', () => stepEvent(1));
     });
   </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var closeBtn = document.querySelector(".connect-close");
+    var box = document.getElementById("connectBox");
+
+    if (closeBtn && box) {
+      closeBtn.addEventListener("click", function () {
+        box.style.display = "none";
+      });
+    }
+  });
+</script>
+
 </body>
 </html>
