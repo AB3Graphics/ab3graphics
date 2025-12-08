@@ -6,16 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Graphic Design • Animation • Marketing • Print • Photography" />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-331V62SH8B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-331V62SH8B"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-331V62SH8B');
+  </script>
 
-  gtag('config', 'G-331V62SH8B');
-</script>
-  
   <!--
     ============================================================
     AB3 PORTFOLIO TEMPLATE – QUICK GUIDE
@@ -28,17 +27,18 @@
               → PROJECT (1, 2, 3…)
 
     NAVIGATION:
-      • Job is picked with the FILTER BUTTONS (CTL, Diesel, etc.).
+      • Job is picked with the JOB TABS (CTL, Diesel, etc.).
       • Inside a job:
-          ↑ / ↓   = move to previous / next CAMPAIGN for that job.
-          ← / →   = move to previous / next PROJECT within the current campaign.
+          JOB  Prev / Next   = cycles jobs.
+          CAMPAIGN  Prev / Next = changes campaign index.
+          EVENT  Prev / Next    = changes project index.
 
     IMPORTANT BEHAVIOR (CURRENT VERSION):
       • Only ONE portfolio panel is visible at a time for the selected job.
-      • Clicking filter buttons (CTL / Diesel / etc.) switches JOBS.
-      • Arrow buttons change which single panel is visible:
-          - Up/Down:    change CAMPAIGN.
-          - Left/Right: change PROJECT within that campaign.
+      • Clicking job tabs switches JOBS.
+      • Prev/Next chips change which single panel is visible:
+          - Campaign row: change CAMPAIGN.
+          - Event row:    change PROJECT within that campaign.
 
     DATA ATTRIBUTES THAT DRIVE EVERYTHING:
       data-category = job key (ctl, diesel, newmark, mimaki, other)
@@ -51,9 +51,9 @@
       3) UPDATE:
            - data-campaign="X"  (campaign index for that job)
            - data-project="Y"   (project index inside that campaign)
-           - Headlines, text, images, alt text.
+           - Headlines, text, images, alt text, and captions.
       4) The JS will automatically:
-           - Navigate to it with arrows.
+           - Navigate to it with the control bar.
            - Show it when its job/campaign/project is selected.
   -->
 
@@ -142,12 +142,6 @@
       font-weight: 600;
     }
 
-    .top-brand svg {
-      height: 42px;
-      width: auto;
-      display: block;
-    }
-
     .brand-text {
       display: flex;
       flex-direction: column;
@@ -226,26 +220,26 @@
       filter: blur(2px);
     }
 
-.bubble-1 {
-  width: 520px;
-  height: 520px;
-  opacity: 0.8;
-  filter: blur(2px);
-}
+    .bubble-1 {
+      width: 520px;
+      height: 520px;
+      opacity: 0.8;
+      filter: blur(2px);
+    }
 
-.bubble-2 {
-  width: 720px;
-  height: 720px;
-  opacity: 0.45;
-  filter: blur(4px);
-}
+    .bubble-2 {
+      width: 720px;
+      height: 720px;
+      opacity: 0.45;
+      filter: blur(4px);
+    }
 
-.bubble-3 {
-  width: 980px;
-  height: 980px;
-  opacity: 0.28;
-  filter: blur(8px);
-}
+    .bubble-3 {
+      width: 980px;
+      height: 980px;
+      opacity: 0.28;
+      filter: blur(8px);
+    }
 
     .sidebar {
       position: relative;
@@ -278,7 +272,6 @@
       background: radial-gradient(circle at top, #042952, #020c1d 55%, #010613 100%);
       box-shadow: var(--shadow-soft);
       border: 1px solid rgba(80, 227, 255, 0.25);
-      overflow: hidden;
     }
 
     .content-width {
@@ -348,15 +341,6 @@
       white-space: nowrap;
     }
 
-    .hero-meta-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      color: var(--text-muted);
-      text-align: left;
-      margin: 0 0 4px;
-    }
-
     .social-grid {
       display: grid;
       grid-template-columns: repeat(6, 30px);
@@ -364,54 +348,17 @@
       justify-content: flex-start;
     }
 
-.social img {
-  width: 28px;         /* force consistent icon size */
-  height: 28px;        /* ensures perfect squares */
-  object-fit: contain; /* keeps logos centered & not distorted */
-  display: block;
-}
-
-.social {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-    .social-note {
-      font-size: 10px;
-      color: var(--text-muted);
-      text-align: left;
-      max-width: 230px;
+    .social img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      display: block;
     }
 
-    .hero-cta {
-      display: inline-flex;
+    .social {
+      display: flex;
       align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 8px 16px;
-      background: radial-gradient(circle at top left, var(--accent-strong), var(--bg-light));
-      color: #001221;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.8),
-        0 0 18px rgba(80, 227, 255, 0.9);
-      transition: transform 0.18s ease-out, box-shadow 0.18s ease-out;
-    }
-
-    .hero-cta span:last-child {
-      font-size: 15px;
-      transform: translateY(-1px);
-    }
-
-    .hero-cta:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.8),
-        0 0 28px rgba(80, 227, 255, 1);
+      justify-content: center;
     }
 
     /* HERO */
@@ -564,314 +511,460 @@
       margin-bottom: 2px;
     }
 
-    /* PORTFOLIO */
-
-/* 1. Make the project panel the same width as the intro/outcome cards */
-.portfolio-panel {
-  /* you probably already have margin etc., this just ensures full width inside */
-}
-
-.portfolio-layout {
-  width: 100%;
-}
-
-.portfolio-primary {
-  width: 100%;
-  max-width: 100%;        /* removes any narrower max-width */
-}
-
-/* If you have a max-width on .mini-card or .portfolio-secondary-grid,
-   and want the project content to match it exactly, you can also do: */
-.portfolio-secondary-grid,
-.portfolio-layout {
-  max-width: 960px;       /* match your existing intro card width */
-  margin: 0 auto;
-}
-
-/* 2. Center the group of arrow buttons in the intro mini-card */
-.portfolio-controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.25rem;
-}
-
-.portfolio-controls .portfolio-arrow {
-  flex: 0 0 auto;
-}
-
-
-/* top nav row inside the mini-card */
-.portfolio-controls,
-.portfolio-footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-/* keep the footer row centered at the bottom of a mini-card */
-.portfolio-footer-row {
-  position: absolute;
-  left: 50%;
-  bottom: 8px;
-  transform: translateX(-50%);
-  margin-top: 0;
-}
-
-/* Button row container – single horizontal line */
-.portfolio-controls,
-.portfolio-footer-row {
-  display: flex;
-  flex-wrap: nowrap;      /* key: keep all 6 on one row */
-  justify-content: center;
-  align-items: center;
-  gap: 0.4rem;
-  max-width: 100%;
-}
-
-/* 3. Add breathing room before the Outcome panel and inside it */
-.mini-card-outcome {
-  margin-top: 2rem;       /* space between last project and outcome card */
-  padding: 1.5rem 1.75rem;
-}
-
-/* 4. Style for the new descriptive paragraph under the headline */
-.portfolio-meta-desc {
-  margin: 0.5rem 0 1.5rem;
-  max-width: 60rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: rgba(200, 230, 255, 0.85); /* subtle, matches your UI vibe */
-}
-
-/* Make the mini-card stack define the width (all three match) */
-.portfolio-secondary-grid {
-  max-width: 960px;      /* match whatever width your intro card uses */
-  margin: 0 auto;
-}
-
-/* Center the arrow button group (unchanged behavior, just reaffirmed) */
-.portfolio-controls {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.6rem;
-  margin-top: 1.25rem;
-}
-
-/* Make the inner project layout fill the mini-card and lose the extra box */
-
-.mini-card-projects {
-  padding: 1.75rem; /* same feel as other mini-cards */
-}
-
-/* Inside the project mini-card, treat layout as a simple block column */
-.mini-card-projects .portfolio-layout {
-  display: block;     /* kill any side-by-side flex if it existed */
-  margin: 0;
-  width: 100%;
-}
-
-/* Remove the inner card look and force full width */
-.mini-card-projects .portfolio-primary {
-  width: 100%;
-  max-width: 100%;
-  margin: 0;
-  padding: 0;         /* mini-card already provides padding */
-  background: none;   /* remove inner panel background */
-  border-radius: 0;   /* remove inner rounded corners */
-  box-shadow: none;   /* no double glow */
-}
-
-/* Keep nice spacing between the two project blocks */
-.mini-card-projects .portfolio-project + .portfolio-project {
-  margin-top: 1.75rem;
-}
-
-
-/* Project card inherits mini-card look; just subtle spacing inside */
-.mini-card-projects .portfolio-project + .portfolio-project {
-  margin-top: 1.75rem;
-}
-
-/* Outcome card should behave like any other mini-card (no extra margin hacks) */
-.mini-card-outcome {
-  margin-top: 0;   /* spacing comes from grid gap now */
-}
-
-
-    .portfolio-shell {
-      margin-top: 6px;
+/* =====================================
+       PORTFOLIO – LAYOUT & CONTROL PANEL
+       ========================================= */
+    .section-portfolio {
+      margin-top: 72px;
     }
 
-    /* On-page instructions visible to the viewer (recruiter/hiring manager) */
+    .portfolio-header {
+      margin-bottom: 16px;
+    }
+
     .portfolio-instructions {
+      max-width: 880px;
       font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 10px;
       line-height: 1.6;
+      color: var(--text-muted);
     }
 
     .portfolio-instructions strong {
       color: var(--accent-soft);
     }
 
-    .portfolio-instructions span.key {
-      font-family: monospace;
-      padding: 1px 4px;
-      border-radius: 4px;
-      border: 1px solid rgba(80, 227, 255, 0.3);
-      margin: 0 2px;
-      background: rgba(0, 0, 0, 0.4);
+    .portfolio-nav-sticky {
+      position: sticky;
+      top: 110px; /* sits just under the main header */
+      z-index: 20;
     }
 
-    .portfolio-filters {
+    @media (max-width: 900px) {
+      .portfolio-nav-sticky {
+        top: 80px;
+      }
+    }
+
+    .portfolio-control-panel {
+      margin: 16px auto 28px;
+      padding: 12px 16px 14px;
+      max-width: 980px;
+      width: 100%;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(3, 20, 40, 0.98), rgba(1, 7, 18, 0.96));
+      border: 1px solid rgba(80, 227, 255, 0.35);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+    }
+
+    .portfolio-nav-shell {
+      display: block;
+      width: 100%;
+    }
+
+    .portfolio-nav {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 14px;
+      flex-direction: column;
+      gap: 0.55rem;
     }
 
-    .filter-btn {
-      font-size: 11px;
-      padding: 5px 11px;
-      border-radius: 999px;
-      border: 1px solid rgba(80, 227, 255, 0.5);
-      background: var(--tab-bg);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 12px rgba(0, 0, 0, 0.8);
-    }
-
-    .filter-btn span.badge {
-      min-width: 18px;
-      padding: 2px 4px;
-      border-radius: 999px;
-      background: var(--tab-pill);
-      color: #001221;
-      font-size: 10px;
-      text-align: center;
-    }
-
-    .filter-btn.active {
-      background: var(--tab-active-bg);
-      color: var(--accent-soft);
-      border-color: rgba(80, 227, 255, 0.9);
-      box-shadow: 0 0 16px rgba(80, 227, 255, 0.85);
-    }
-
-    /* Each job's projects are stacked vertically.
-       JS will only hide NON-matching jobs with .hidden. */
-    .portfolio-panel {
-      border-radius: 22px;
-      padding: 16px 16px 18px;
-      background: var(--panel-bg);
-      border: 1px solid var(--panel-border);
-      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.9);
-      cursor: zoom-in;
-      margin-bottom: 18px;
-    }
-
-    /* Highlight the panel you just navigated to */
-    .portfolio-panel.active {
-      outline: 1px solid rgba(80, 227, 255, 0.55);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.9),
-        0 20px 46px rgba(0, 0, 0, 0.9),
-        0 0 26px rgba(80, 227, 255, 0.7);
-    }
-
-    /* Utility class: JS hides non-matching jobs with this */
-    .portfolio-panel.hidden {
-      display: none;
-    }
-
-/* Each project block inside a portfolio panel */
-.portfolio-project + .portfolio-project {
-  margin-top: 60px; /* increase as needed */
+.portfolio-nav-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
 }
 
+.portfolio-nav-top-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
 
-    .portfolio-meta-row {
+.portfolio-nav-title {
+  font-weight: 600;
+  color: var(--accent-soft);
+}
+
+.portfolio-nav-path {
+  font-weight: 400;
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.portfolio-toggle-btn {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(2, 20, 35, 0.95);
+  color: var(--accent-soft);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  white-space: nowrap;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    box-shadow 150ms ease,
+    transform 120ms ease;
+}
+
+.portfolio-toggle-btn:hover {
+  background: rgba(6, 40, 70, 0.96);
+  color: #fff;
+  box-shadow: 0 0 12px rgba(80, 227, 255, 0.7);
+  transform: translateY(-1px);
+}
+
+/* Collapsed state: keep just the header + toggle visible */
+.portfolio-control-panel.collapsed {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+
+.portfolio-control-panel.collapsed #portfolioControlBody {
+  display: none;
+}
+
+.portfolio-control-panel.collapsed .portfolio-nav-path {
+  display: none;
+}
+
+    .portfolio-nav-title {
+      font-weight: 600;
+      color: var(--accent-soft);
+    }
+
+    .portfolio-nav-path {
+      font-weight: 400;
+      font-size: 0.7rem;
+      opacity: 0.9;
+    }
+
+    .portfolio-nav-row {
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 10px;
-      font-size: 12px;
-      color: var(--text-muted);
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .portfolio-nav-row-jobs {
+      justify-content: flex-start;
+      row-gap: 0.4rem;
+      padding-top: 0.15rem;
+      border-top: 1px solid rgba(80, 227, 255, 0.2);
+    }
+
+    .portfolio-nav-row-jobs::before {
+      content: "Job:";
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-size: 0.68rem;
+      color: rgba(183, 212, 239, 0.85);
+      opacity: 0.9;
+      margin-right: 0.5rem;
+      flex: 0 0 auto;
+    }
+
+    .portfolio-nav-row-controls {
+      justify-content: center;              /* center the three nav groups */
+      column-gap: 1.75rem;                  /* comfy spacing between groups */
+      row-gap: 0.4rem;
+      padding-top: 0.35rem;
+      border-top: 1px solid rgba(80, 227, 255, 0.2);
+    }
+
+    .nav-pill {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 0.3rem 0.95rem;
+      border-radius: 999px;
+      background: rgba(6, 33, 62, 0.92);
+      color: #e8f7ff;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: background 150ms ease, box-shadow 150ms ease, transform 120ms ease;
+      white-space: nowrap;
+    }
+
+    .nav-pill:hover {
+      background: rgba(16, 60, 108, 0.98);
+      transform: translateY(-1px);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.35);
+    }
+
+    .nav-pill.is-active {
+      background: radial-gradient(circle at 30% 0%, #54e4ff, #00a5ff);
+      color: #021018;
+      box-shadow: 0 0 14px rgba(0, 255, 255, 0.65);
+    }
+
+    .nav-group {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.72rem;
+      flex: 0 0 auto;        /* content-sized instead of stretching */
+      min-width: auto;
+    }
+
+    .nav-label {
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-size: 0.65rem;
+      opacity: 0.8;
+      color: rgba(183, 212, 239, 0.9);
+    }
+
+    .nav-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      background: rgba(2, 20, 35, 0.95);
+      color: #e8f7ff;
+      padding: 0.22rem 0.75rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 150ms ease, border-color 150ms ease,
+                  transform 120ms ease, box-shadow 150ms ease;
+    }
+
+    .nav-chip-current {
+      background: radial-gradient(circle at 20% 0%, rgba(0, 255, 255, 0.2), rgba(0, 0, 0, 0.85));
+      border-color: rgba(0, 255, 255, 0.8);
+      cursor: default;
+    }
+
+    .nav-chip-prev,
+    .nav-chip-next {
+      opacity: 0.88;
+    }
+
+    .nav-chip:hover:not(.nav-chip-current) {
+      border-color: rgba(0, 255, 255, 0.9);
+      background: rgba(6, 40, 70, 0.96);
+      transform: translateY(-1px);
+      box-shadow: 0 0 14px rgba(80, 227, 255, 0.7);
+    }
+
+@media (max-width: 768px) {
+  .portfolio-control-panel {
+    padding: 10px 12px;
+    border-radius: 14px;
+  }
+
+  .portfolio-nav-top {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .portfolio-nav-top-main {
+    max-width: 70%;
+  }
+
+  .portfolio-nav-path {
+    font-size: 0.65rem;
+  }
+
+  .portfolio-nav-row-controls {
+    flex-direction: column;
+    align-items: stretch;
+    column-gap: 0.75rem;
+  }
+
+  .nav-group {
+    width: 100%;
+  }
+}
+
+      .portfolio-nav-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.1rem;
+      }
+
+      .portfolio-nav-row-controls {
+        flex-direction: column;
+        align-items: stretch;
+        column-gap: 0.75rem;
+      }
+
+      .nav-group {
+        width: 100%;
+      }
+    }
+
+    /* =========================================
+       PORTFOLIO – PANELS & PROJECTS
+   ========================================= */
+
+/* JOB PANELS – match navigator radius + add breathing room */
+.portfolio-panel {
+  border-radius: 16px;                 /* same feel as the navigator */
+  padding: 28px 28px 26px;             /* more space away from border */
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.9);
+  cursor: zoom-in;
+  margin: 24px auto 36px;
+  max-width: 980px;
+  overflow: hidden;
+}
+
+.portfolio-panel.hidden {
+  display: none;
+}
+
+.portfolio-panel.active {
+  outline: 1px solid rgba(80, 227, 255, 0.55);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.9),
+    0 20px 46px rgba(0, 0, 0, 0.9),
+    0 0 26px rgba(80, 227, 255, 0.7);
+}
+
+/* push the title row and description off the edges a bit more */
+.portfolio-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  font-size: 12px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.portfolio-meta-right {
+  text-align: right;
+}
+
+.portfolio-meta-right span {
+  display: block;
+}
+
+.portfolio-meta-desc {
+  margin: 0.75rem 0 1.75rem;          /* nice breathing room */
+  max-width: 60rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: rgba(200, 230, 255, 0.85);
+}
+
+    .portfolio-secondary-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .mini-card {
+      position: relative;
+      border-radius: 14px;
+      padding: 14px 16px 18px;
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(80, 227, 255, 0.25);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.9);
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .mini-card-title {
       text-transform: uppercase;
       letter-spacing: 0.16em;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+      font-size: 10px;
     }
 
-    .portfolio-meta-right {
-      text-align: right;
-    }
-
-    .portfolio-meta-right span {
+    .mini-card strong {
       display: block;
+      margin-bottom: 6px;
+      font-size: 12px;
     }
 
-    .portfolio-layout {
-      display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
-      gap: 14px;
-      padding-bottom: 8px;
-    }
-
-    .portfolio-layout + .portfolio-layout {
-    margin-top: 150px;
-    }
-
-    .portfolio-primary {
-      border-radius: 18px;
-      padding: 14px 16px 10px;
-      background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(5, 40, 80, 0.95));
-      border: 1px solid rgba(80, 227, 255, 0.4);
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.7);
-      min-height: auto;
-      display: block;
-    }
-
-    .portfolio-primary h4 {
+    .mini-card p {
       margin: 0;
+    }
+
+    .mini-card img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin-top: 6px;
+      display: block;
+    }
+
+    .mini-card-projects {
+      padding: 18px 18px 18px;
+    }
+
+    .mini-card-outcome {
+      padding: 18px 18px 18px;
+    }
+
+    /* Project blocks inside the middle mini-card */
+    .portfolio-project {
+      padding: 24px 0;
+      border-top: 1px solid rgba(80, 227, 255, 0.22);
+    }
+
+    .portfolio-project:first-of-type {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .portfolio-project h4 {
+      margin: 0 0 8px;
       font-size: 15px;
     }
 
-    .portfolio-primary p {
+    .portfolio-project > p {
+      margin: 0 0 10px;
       font-size: 13px;
       line-height: 1.6;
-      margin: 0;
-      color: var(--text-main);
     }
 
-    .portfolio-primary small {
+    .portfolio-project small {
+      display: block;
+      margin-top: 4px;
+      margin-bottom: 12px;
       font-size: 11px;
       color: var(--text-muted);
     }
 
-    .portfolio-primary img {
-      max-width: 50%;
-      border-radius: 12px;
+    /* Thumbnail grid */
+    .portfolio-thumb-bar {
       margin-top: 8px;
-      display: block;
+      margin-bottom: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
     }
 
-    /* --- NEW: grid-based thumbnail layout for all portfolio panels --- */
-
-    .portfolio-thumb-bar {
-      margin-top: 10px;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-      gap: 8px;
+    .portfolio-thumb-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
     }
 
     .portfolio-thumb {
@@ -897,270 +990,85 @@
       box-shadow: 0 0 14px rgba(80, 227, 255, 0.7);
     }
 
-    .portfolio-thumb.active,
-    .portfolio-thumb.expanded {
+    .portfolio-thumb.active {
       opacity: 1;
       border-color: rgba(80, 227, 255, 0.9);
       box-shadow: 0 0 18px rgba(80, 227, 255, 0.95);
-      transform: scale(1.08);
+      transform: scale(1.02);
     }
 
-    .portfolio-secondary-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-        .mini-card {
-      position: relative;              /* so we can absolutely-position the footer */
-      border-radius: 14px;
-      padding: 10px 12px 32px;         /* extra bottom padding for the buttons */
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(80, 227, 255, 0.25);
-      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.9);
-      font-size: 11px;
-      line-height: 1.5;
-    }
-
-    .mini-card-title {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-muted);
-      margin-bottom: 4px;
+    .portfolio-thumb-caption {
+      margin-top: 4px;
       font-size: 10px;
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-bottom: 2px;
-      font-size: 12px;
-    }
-
-    .mini-card img {
-      max-width: 100%;
-      border-radius: 10px;
-      margin-top: 6px;
-      display: block;
-    }
-
-    /* FOOTER ROW: fixed to bottom-right of the mini-card */
-    .portfolio-footer-row {
-      position: absolute;
-      right: 10px;
-      bottom: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      justify-content: center;
-      pointer-events: auto;
-      margin-top: 1.25rem;
-    }
-
-    /* each child is just a button – no nested divs needed */
-    .portfolio-footer-row > * {
-      margin: 0;
-    }
-
-/* NAV BUTTONS – compact pill size */
-.portfolio-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-
-  /* smaller pill */
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
-
-  /* existing glow look */
-  border: 1px solid rgba(0, 255, 255, 0.7);
-  background: radial-gradient(
-    circle at 20% 0,
-    rgba(0, 255, 255, 0.28),
-    rgba(0, 20, 40, 0.95)
-  );
-  color: #e9fbff;
-  box-shadow: var(--arrow-glow);
-
-  /* smaller type so 6 fit on one row */
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  white-space: nowrap;
-
-  cursor: pointer;
-  transition:
-    transform 0.18s ease-out,
-    box-shadow 0.18s ease-out,
-    background 0.18s ease-out,
-    border-color 0.18s ease-out;
-}
-
-/* Footer button row (all nav buttons) */
-.portfolio-footer-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.35rem;
-  margin-top: 1.25rem;
-}
-
-/* Smaller pill buttons */
-.portfolio-arrow {
-  font-size: 0.75rem;          /* smaller text */
-  padding: 0.30rem 0.60rem;    /* tighter padding */
-  border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.55);
-  background: rgba(0, 0, 0, 0.55);
-  color: #fff;
-  line-height: 1.1;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.25rem;
-  cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    box-shadow 0.18s ease,
-    background 0.18s ease,
-    border-color 0.18s ease;
-}
-
-/* Icon inside the button (arrow glyphs) */
-.portfolio-arrow .icon {
-  font-size: 0.8em;
-}
-
-/* Hover / focus animation stays but feels lighter because of the smaller size */
-.portfolio-arrow:hover,
-.portfolio-arrow:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.35);
-  background: rgba(255, 255, 255, 0.08);
-  border-color: rgba(255, 255, 255, 0.75);
-}
-
-
-.portfolio-arrow .icon {
-  font-size: 12px;   /* slightly larger than text */
-  line-height: 1;
-  text-shadow: 0 0 6px rgba(80, 227, 255, 0.9);
-}
-
-.portfolio-arrow .label {
-  font-size: 9px;
-}
-
-    /* Simple hover / active animation */
-    .portfolio-arrow:hover {
-      transform: translateY(-1px) scale(1.05);
-      background: rgba(0, 0, 0, 0.7);
-      border-color: rgba(80, 227, 255, 1);
-      box-shadow: 0 0 22px rgba(80, 227, 255, 1);
-    }
-
-    /* direction hints via small nudge animations */
-    .portfolio-arrow[data-dir="next"] .icon {
-      animation: nudgeRight 1.2s ease-in-out infinite alternate;
-    }
-
-    .portfolio-arrow[data-dir="prev"] .icon {
-      animation: nudgeLeft 1.2s ease-in-out infinite alternate;
-    }
-
-    .portfolio-arrow[data-dir="panel-next"] .icon {
-      animation: nudgeDown 1.2s ease-in-out infinite alternate;
-    }
-
-    .portfolio-arrow[data-dir="panel-prev"] .icon {
-      animation: nudgeUp 1.2s ease-in-out infinite alternate;
-    }
-
-    @keyframes nudgeRight {
-      from { transform: translateX(0); }
-      to   { transform: translateX(4px); }
-    }
-
-    @keyframes nudgeLeft {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-4px); }
-    }
-
-    @keyframes nudgeDown {
-      from { transform: translateY(0); }
-      to   { transform: translateY(3px); }
-    }
-
-    @keyframes nudgeUp {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-3px); }
-    }
-
-    .contact-footer {
-      margin-top: 18px;
-      font-size: 11px;
+      line-height: 1.4;
       color: var(--text-muted);
       text-align: left;
     }
 
-    /* FLOATING CONTACT */
-    .floating-contact {
-      width: 240px;
-      max-width: 240px;
+    /* LIGHTBOX OVERLAY */
+    #lightbox-overlay {
       position: fixed;
-      left: 20px;
-      bottom: 20px;
-      z-index: 100;
-      max-width: 280px;
-      padding: 14px 16px 16px;
-      border-radius: 20px;
-      background: radial-gradient(circle at top left, #053260, #010814 70%);
-      border: 1px solid rgba(80, 227, 255, 0.6);
-      box-shadow:
-        0 0 0 1px rgba(0, 0, 0, 0.8),
-        0 18px 36px rgba(0, 0, 0, 0.9),
-        0 0 24px rgba(80, 227, 255, 0.8);
-      backdrop-filter: blur(12px);
-    }
-
-    .floating-contact.hidden {
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
       display: none;
-    }
-
-    .floating-contact-header {
-      display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      margin-bottom: 6px;
+      z-index: 5000;
+      backdrop-filter: blur(6px);
+      padding: 20px;
     }
 
-    .floating-close {
-      border: none;
-      background: transparent;
-      color: var(--text-muted);
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 1;
-      padding: 2px 4px;
-      border-radius: 50%;
-      transition: background 0.15s ease-out, color 0.15s ease-out;
+    #lightbox-overlay.active {
+      display: flex;
+      animation: lbFadeIn 0.25s ease-out;
     }
 
-    .floating-close:hover {
-      background: rgba(80, 227, 255, 0.2);
-      color: var(--accent-soft);
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
     }
 
-    @media (max-width: 640px) {
-      .floating-contact {
-        left: 12px;
-        right: 12px;
-        bottom: 12px;
-        max-width: none;
-      }
+    .lightbox-inner {
+      max-width: 96vw;
+      max-height: 96vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
     }
 
-    /* PANEL ZOOM OVERLAY (FULL PANEL) */
+    #lightbox-image {
+      width: auto;
+      max-width: 96vw;
+      max-height: calc(96vh - 110px);
+      object-fit: contain;
+      border-radius: 14px;
+      box-shadow: 0 0 40px rgba(80, 227, 255, 0.9);
+      border: 1px solid rgba(80, 227, 255, 0.4);
+      animation: lbZoom 0.22s ease-out;
+    }
+
+    @keyframes lbZoom {
+      from { transform: scale(0.92); opacity: 0; }
+      to   { transform: scale(1);    opacity: 1; }
+    }
+
+    #lightbox-caption {
+      width: 100%;
+      max-width: 900px;
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-main);
+      background: rgba(0, 0, 0, 0.78);
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(80, 227, 255, 0.4);
+      box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
+      overflow-wrap: anywhere;
+      text-align: center;
+    }
+
+    /* PANEL ZOOM OVERLAY */
     .panel-overlay {
       position: fixed;
       inset: 0;
@@ -1169,7 +1077,7 @@
       display: none;
       justify-content: center;
       align-items: center;
-      z-index: 120;
+      z-index: 4000;
       padding: 20px;
     }
 
@@ -1211,19 +1119,15 @@
       color: var(--accent-soft);
     }
 
-    .panel-overlay-content .portfolio-panel {
-      cursor: default;
-      padding: 0;
-      border-radius: 0;
-      background: transparent;
-      border: none;
-      box-shadow: none;
-      display: block;
-    }
+.panel-overlay-content .portfolio-panel {
+  /* keep the same look as the main panel, just disable the zoom cursor
+     and allow it to expand fully inside the overlay */
+  cursor: default;
+  display: block;
+  margin: 0;
+  max-width: none;
+}
 
-    .panel-overlay-content .portfolio-footer-row {
-      display: none;
-    }
 
     /* REVEAL */
     .reveal {
@@ -1236,86 +1140,8 @@
       opacity: 1;
       transform: translateY(0);
     }
-/* ================================
-   LIGHTBOX OVERLAY
-   ================================ */
-#lightbox-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.92);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 5000;
-  backdrop-filter: blur(6px);
-  padding: 20px;
-}
 
-#lightbox-overlay.active {
-  display: flex;
-  animation: lbFadeIn 0.25s ease-out;
-}
-
-@keyframes lbFadeIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-/* ================================
-   INNER WRAPPER (IMAGE + CAPTION)
-   ================================ */
-.lightbox-inner {
-  max-width: 96vw;
-  max-height: 96vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ================================
-   LIGHTBOX IMAGE
-   ================================ */
-.lightbox-inner img {
-  width: auto;
-  max-width: 96vw;
-  max-height: calc(96vh - 110px);  /* Critical: reserve space for caption */
-  object-fit: contain;
-  border-radius: 14px;
-  box-shadow: 0 0 40px rgba(80, 227, 255, 0.9);
-  border: 1px solid rgba(80, 227, 255, 0.4);
-  animation: lbZoom 0.22s ease-out;
-}
-
-@keyframes lbZoom {
-  from { transform: scale(0.92); opacity: 0; }
-  to   { transform: scale(1);    opacity: 1; }
-}
-
-/* ================================
-   CAPTION TEXT
-   ================================ */
-#lightbox-caption {
-  width: 100%;
-  max-width: 900px;
-  font-size: 13px;
-  line-height: 1.55;
-  color: var(--text-main);
-  background: rgba(0, 0, 0, 0.78);
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid rgba(80, 227, 255, 0.4);
-  box-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
-  overflow-wrap: anywhere;
-  text-align: center;
-}
-
-    @keyframes lbZoom {
-      from { transform: scale(0.88); opacity: 0; }
-      to   { transform: scale(1);    opacity: 1; }
-    }
-
-    /* RESPONSIVE */
+    /* RESPONSIVE LAYOUT */
     @media (max-width: 960px) {
       .resume-shell {
         grid-template-columns: minmax(0, 1fr);
@@ -1334,9 +1160,6 @@
       .top-nav-links {
         flex-wrap: wrap;
       }
-      .portfolio-layout {
-        grid-template-columns: minmax(0, 1fr);
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1346,22 +1169,32 @@
         transition: none !important;
       }
     }
-  /* FINAL OVERRIDES: remove inner rectangle inside the project mini-card */
-.mini-card-projects .portfolio-layout {
-  display: block;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    
+    /* === JOB PANEL RADIUS + PADDING FIX ===================== */
+
+/* Make the CTL AMEDICA / "Tradeshow" job panel match the nav card */
+.section-portfolio .portfolio-panel {
+  /* softer, more pill-like corners */
+  border-radius: 28px;
+
+  /* more air around the title + description */
+  padding: 32px 30px 26px;
+
+  /* keep it aligned with the navigator width & give it breathing room */
+  max-width: 980px;
+  margin: 0 auto 36px;
+
+  /* restate core styling so this wins over earlier rules */
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.9);
 }
 
-.mini-card-projects .portfolio-primary {
-  padding: 0;
-  margin: 0;
-  background: none;
-  border: none;
-  box-shadow: none;
-  border-radius: 0;
+/* Extra space between the top blurb and the project cards */
+.section-portfolio .portfolio-panel .portfolio-meta-desc {
+  margin: 0.75rem 0 1.75rem;
 }
+
   </style>
 </head>
 
@@ -1372,7 +1205,6 @@
         <img src="images/ab3-logo.svg"
              alt="AB3 Graphics Logo"
              style="height:100px; width:auto; display:block;">
-
         <div class="brand-text">
           <h1>AB3 Graphics</h1>
           <span>Design • Animation • Print</span>
@@ -1393,7 +1225,6 @@
     <div class="bubble bubble-1"></div>
     <div class="bubble bubble-2"></div>
     <div class="bubble bubble-3"></div>
-
 
     <aside class="sidebar" id="contact">
       <section class="sidebar-section reveal">
@@ -1633,2483 +1464,1152 @@
           <a href="#portfolio" class="section-arrow" aria-label="Scroll to portfolio section">↓</a>
         </section>
 
-        <section class="section reveal" id="portfolio">
-          <div class="section-header">
-            <h3 class="section-title">Portfolio</h3>
-          </div>
-
-          <div class="portfolio-shell">
+        <!-- ===================== PORTFOLIO ====================== -->
+        <section id="portfolio" class="section section-portfolio">
+          <div class="portfolio-header">
+            <h2 class="section-title">Portfolio</h2>
             <p class="portfolio-instructions">
-              <strong>How to explore this portfolio:</strong>
-              1) Choose a job filter below (for example <span class="key">CTL Amedica</span> or <span class="key">Mimaki USA</span>).
-              2) Inside each job, use <span class="key">↑</span> / <span class="key">↓</span> buttons to move between different <strong>campaigns</strong>.
-              3) Use <span class="key">←</span> / <span class="key">→</span> buttons to move between different <strong>projects</strong> within the current campaign.
-              Only one panel is shown at a time so you can focus on each project individually.
+              Use the controls below to explore my work:
+              <strong>JOB</strong> chooses the company/client,
+              <strong>CAMPAIGN</strong> switches between campaigns for that job,
+              and <strong>EVENT</strong> selects the specific project within that campaign.
+              Once you’ve picked a Job / Campaign / Event, scroll down to view the intro,
+              project details, and outcomes for that selection.
             </p>
+          </div>
 
-<div class="portfolio-filters">
-  <button class="filter-btn active" data-filter="ctl">
-    CTL Amedica
-  </button>
-  <button class="filter-btn" data-filter="diesel">
-    Diesel Displays
-  </button>
-  <button class="filter-btn" data-filter="newmark">
-    Newmark Real Estate
-  </button>
-  <button class="filter-btn" data-filter="mimaki">
-    Mimaki USA
-  </button>
-  <button class="filter-btn" data-filter="other">
-    Other Projects
-  </button>
-</div>
+         <!-- STICKY NAV PANEL -->
+          <div class="portfolio-nav-sticky">
+            <div class="portfolio-control-panel">
+              <div class="portfolio-nav-shell">
+                <div class="portfolio-nav">
+                  <div class="portfolio-nav-top">
+                    <span class="portfolio-nav-title">Portfolio Navigator</span>
+                    <span class="portfolio-nav-path" id="portfolioNavPath">
+                      CTL Amedica · Campaign 1 · Event 1
+                    </span>
+                  </div>
 
-<!-- ==================== CTL – CAMPAIGN 1 / PROJECT 1 ==================== -->
-<div class="portfolio-panel"
-     data-category="ctl"
-     data-campaign="1"
-     data-project="1">
+                  <!-- JOB TABS -->
+                  <div class="portfolio-nav-row portfolio-nav-row-jobs">
+                    <button class="nav-pill is-active" data-job="ctl">CTL Amedica</button>
+                    <button class="nav-pill" data-job="diesel">Diesel Displays</button>
+                    <button class="nav-pill" data-job="newmark">Newmark</button>
+                    <button class="nav-pill" data-job="mimaki">Mimaki USA</button>
+                    <button class="nav-pill" data-job="other">Freelance</button>
+                  </div>
 
-  <!-- META -->
-  <div class="portfolio-meta-row">
-    <div>Tradeshow campaign • Happy hour invitations • Print &amp; digital</div>
-    <div class="portfolio-meta-right">
-      <span>CTL Amedica</span>
-      <span>2025 NASS</span>
-    </div>
-  </div>
+                  <!-- JOB / CAMPAIGN / EVENT CONTROLS -->
+                  <div class="portfolio-nav-row portfolio-nav-row-controls">
+                    <div class="nav-group">
+                      <span class="nav-label">Job</span>
+                      <button class="nav-chip nav-chip-prev" id="prevJob">◀ Prev</button>
+                      <button class="nav-chip nav-chip-current" id="currentJob">CTL Amedica</button>
+                      <button class="nav-chip nav-chip-next" id="nextJob">Next ▶</button>
+                    </div>
 
-  <!-- DESCRIPTION UNDER HEADLINE -->
-  <p class="portfolio-meta-desc">
-    Integrated NASS 2025 tradeshow work, connecting QR-driven happy hour invitations,
-    GA4 landing pages, and large-format booth graphics into one cohesive campaign
-    narrative that’s easy to track and easy to read from aisle distance.
-  </p>
+                    <div class="nav-group">
+                      <span class="nav-label">Campaign</span>
+                      <button class="nav-chip nav-chip-prev" id="prevCampaign">◀ Prev</button>
+                      <button class="nav-chip nav-chip-current" id="currentCampaign">Campaign 1</button>
+                      <button class="nav-chip nav-chip-next" id="nextCampaign">Next ▶</button>
+                    </div>
 
-  <!-- ================= ALL PANELS: INTRO / PROJECTS / OUTCOME ================= -->
-  <div class="portfolio-secondary-grid">
-
-    <!-- INTRODUCTORY PANEL -->
-    <div class="mini-card">
-      <div class="mini-card-title">Analytics</div>
-      <strong>QR → GA4 funnel</strong>
-      <p>
-        Landing sections planned around key GA4 events like page views, scroll depth,
-        PDF downloads, and RSVP clicks.
-      </p>
-
-      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS) -->
-      <div class="portfolio-controls">
-        <!-- PROJECT NAV -->
-        <button class="portfolio-arrow" data-dir="prev">
-          <span class="icon">←</span>
-          <span class="label">Previous Project</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="next">
-          <span class="icon">→</span>
-          <span class="label">Next Project</span>
-        </button>
-
-        <!-- CAMPAIGN NAV -->
-        <button class="portfolio-arrow" data-dir="campaign-prev">
-          <span class="icon">↑</span>
-          <span class="label">Previous Campaign</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="campaign-next">
-          <span class="icon">↓</span>
-          <span class="label">Next Campaign</span>
-        </button>
-
-        <!-- EMPLOYER / JOB NAV -->
-        <button class="portfolio-arrow" data-dir="panel-prev">
-          <span class="icon">«</span>
-          <span class="label">Previous Employer</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="panel-next">
-          <span class="icon">»</span>
-          <span class="label">Next Employer</span>
-        </button>
-      </div>
-      <!-- END NAV BAR -->
-    </div>
-    <!-- ================= END INTRO PANEL ================= -->
-
-    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
-    <div class="mini-card mini-card-projects">
-      <div class="portfolio-layout">
-        <div class="portfolio-primary">
-
-          <!-- PROJECT BLOCK 1 -->
-          <div class="portfolio-project">
-            <h4>2025 NASS Campaign – KLIMT™ Booth Invites</h4>
-            <p>
-              Concepted and produced a cohesive NASS 2025 invitation series for CTL Amedica,
-              tying together neon “spine-in-a-glass” visuals with KLIMT™ implant imagery.
-              These invites live at the booth, in emails, and on social media.
-            </p>
-            <div>
-              <small>
-                Roles: Art direction, campaign concept, 3D implant integration, layout design,
-                print-ready prep for handouts, table tents, and email-safe versions.
-              </small>
-            </div>
-
-            <div class="portfolio-thumb-bar">
-              <img class="portfolio-thumb active"
-                   src="images/2025 NASS INVITATION - 1.png"
-                   data-full="images/2025 NASS INVITATION - 1.png"
-                   alt="KLIMT NASS invitation teal"
-                   data-caption="2025 NASS Happy Hour invitation – teal neon variant.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS INVITATION - 2.png"
-                   data-full="images/2025 NASS INVITATION - 2.png"
-                   alt="KLIMT NASS invitation magenta"
-                   data-caption="Magenta neon variant.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS INVITATION - 3.png"
-                   data-full="images/2025 NASS INVITATION - 3.png"
-                   alt="KLIMT NASS invitation gold"
-                   data-caption="Gold neon variant.">
+                    <div class="nav-group">
+                      <span class="nav-label">Event</span>
+                      <button class="nav-chip nav-chip-prev" id="prevEvent">◀ Prev</button>
+                      <button class="nav-chip nav-chip-current" id="currentEvent">Event 1</button>
+                      <button class="nav-chip nav-chip-next" id="nextEvent">Next ▶</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- PROJECT BLOCK 2 -->
-          <div class="portfolio-project">
-            <h4>2025 NASS Campaign – Booth Panel System</h4>
-            <p>
-              Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF.
-              Each has its own hero image, color identity, and strong aisle-distance legibility.
+          <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: ctl / CAMPAIGN: 1 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="ctl"
+               data-campaign="1"
+               data-project="1">
+            <div class="portfolio-meta-row">
+              <div class="portfolio-nav-title">CTL Amedica</div>
+              <div class="portfolio-meta-right">
+                <span class="portfolio-nav-title">2025 NASS</span>
+              </div>
+            </div>
+
+            <p class="portfolio-meta-desc">
+              Integrated NASS 2025 tradeshow work, connecting QR-driven happy hour invitations,
+              GA4 landing pages, and large-format booth graphics into one cohesive campaign
+              narrative that’s easy to track and easy to read from aisle distance.
             </p>
-            <div>
-              <small>
-                Roles: Art direction, 3D integration, typographic hierarchy,
-                prepress for large-format substrates.
-              </small>
-            </div>
 
-            <div class="portfolio-thumb-bar">
-              <img class="portfolio-thumb active"
-                   src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-                   data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-                   alt="Monet booth panel"
-                   data-caption="Monet ALIF booth panel — blue gradient hero.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-                   data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-                   alt="KLIMT booth panel"
-                   data-caption="KLIMT booth panel — neon spine-in-a-glass motif.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-                   data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-                   alt="Mondrian booth panels"
-                   data-caption="Mondrian ALIF modular grids.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS Booth - Panel 5 - 130x15.png"
-                   data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
-                   alt="Wide Mondrian panel"
-                   data-caption="Wide Mondrian bridging panel.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-                   data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-                   alt="Booth 3D"
-                   data-caption="3D booth overview.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS - Trade Show Booth - 01.jpeg"
-                   data-full="images/2025 NASS - Trade Show Booth - 01.jpeg"
-                   alt="Booth angle"
-                   data-caption="Angle view of hero wall.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS - Trade Show Booth - 02.jpeg"
-                   data-full="images/2025 NASS - Trade Show Booth - 02.jpeg"
-                   alt="Booth Mondrian"
-                   data-caption="Mondrian ALIF modular side.">
-
-              <img class="portfolio-thumb"
-                   src="images/2025 NASS - Trade Show Booth - 03.jpeg"
-                   data-full="images/2025 NASS - Trade Show Booth - 03.jpeg"
-                   alt="Booth overview"
-                   data-caption="Full booth system view.">
-            </div>
-          </div>
-
-        </div> <!-- end .portfolio-primary -->
-      </div>   <!-- end .portfolio-layout -->
-    </div>
-    <!-- ================= END PROJECT PANEL ================= -->
-
-    <!-- ================= OUTCOME PANEL (MATCH INTRO STYLE) ================= -->
-    <div class="mini-card mini-card-outcome">
-      <div class="mini-card-title">Outcome</div>
-      <strong>Campaign impact</strong>
-      <p>
-        Strengthened CTL’s NASS identity with a unified neon visual language applied to
-        print, booth, email, and QR analytics-driven assets.
-      </p>
-    </div>
-    <!-- ================= END OUTCOME PANEL ================= -->
-
-  </div> <!-- end .portfolio-secondary-grid -->
-
-</div> <!-- end .portfolio-panel -->
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 2 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="2">
-              <div class="portfolio-meta-row">
-                <div>Tradeshow campaign • Happy hour invitations • Print &amp; digital</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 NASS</span>
-                </div>
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
               </div>
 
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>2025 NASS Campaign – Happy Hour Poster Series</h4>
-                    <p>
-                      Extended the KLIMT™ concept into a full happy hour poster series, using neon
-                      cocktails with implants as stir sticks and garnish. Designed to catch attention
-                      at distance while staying on-brand for CTL.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Art direction, 3D integration, color strategy for backlit monitors and prints,
-                        production-ready files for booth monitors and venue signage.
-                      </small>
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Happy Hour Invitations</h4>
+                  <p>
+                    Concepted and produced NASS 2025 invitation artwork tying neon cocktails to
+                    KLIMT™ implant imagery. Designed to work both digitally and in print,
+                    with QR pathways to GA4-ready landing pages.
+                  </p>
+                  <small>
+                    Roles: Art direction, campaign concept, 3D implant integration,
+                    layout design, print-ready prep for handouts and email-safe versions.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/2025 NASS INVITATION - 1.png"
+                           data-full="images/2025 NASS INVITATION - 1.png"
+                           alt="2025 NASS Happy Hour invitation teal neon variant"
+                           data-caption="2025 NASS Happy Hour invitation – teal neon variant built around the KLIMT glass hero.">
+                      <div class="portfolio-thumb-caption">
+                        Teal neon KLIMT™ NASS invitation – primary hero variant.
+                      </div>
                     </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/2025 NASS Happy Hour - 03.png"
-                        data-full="images/2025 NASS Happy Hour - 03.png"
-                        alt="Teal neon martini glass – main poster"
-                        data-caption="Teal neon martini hero poster – primary happy hour visual used across booth monitors and signage."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS Happy Hour - 01.png"
-                        data-full="images/2025 NASS Happy Hour - 01.png"
-                        alt="Green neon rocks glass – poster variant"
-                        data-caption="Green neon rocks glass poster variant matching KLIMT implant visual language."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS Happy Hour - 02.png"
-                        data-full="images/2025 NASS Happy Hour - 02.png"
-                        alt="Gold neon cocktail glass – poster variant"
-                        data-caption="Gold neon cocktail poster variant completing the trilogy of KLIMT-themed drinks."
-                      >
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 2.png"
+                           data-full="images/2025 NASS INVITATION - 2.png"
+                           alt="2025 NASS Happy Hour invitation magenta neon variant"
+                           data-caption="2025 NASS Happy Hour invitation – magenta neon colorway for A/B visual testing.">
+                      <div class="portfolio-thumb-caption">
+                        Magenta neon KLIMT™ NASS invitation – alternate colorway.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="2025 NASS Happy Hour invitation alternate composition"
+                           data-caption="Alternate neon composition maintaining the same core implant-glass concept.">
+                      <div class="portfolio-thumb-caption">
+                        Alternate composition – same hero glass concept with layout variation.
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Happy Hour Posters</div>
-                    <strong>Neon glass series</strong>
-                    <p>
-                      Three drinks aligned by layout to create a mini “collection” of NASS visuals that
-                      can be sequenced in emails or placed side by side in the booth.
-                    </p>
-                  </div>
+                <!-- PROJECT 2 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Booth Panel System</h4>
+                  <p>
+                    Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF. Each
+                    line gets its own color identity, hero implant image, and aisle-distance
+                    typography tuned for fast scanning.
+                  </p>
+                  <small>
+                    Roles: Art direction, 3D integration, typographic hierarchy,
+                    prepress for large-format substrates.
+                  </small>
 
-                  <div class="mini-card">
-                    <div class="mini-card-title">Environmental Use</div>
-                    <strong>Booth &amp; bar surfaces</strong>
-                    <p>
-                      Handled both high-res print and animated monitor versions, keeping typography sharp
-                      at multiple sizes.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 3 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="3">
-              <div class="portfolio-meta-row">
-                <div>Tradeshow campaign • Happy hour invitations • Print &amp; digital</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 NASS</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>2025 NASS Campaign – Marketing Cards</h4>
-                    <p>
-                      Designed compact marketing cards echoing the NASS visual language. Fronts carry
-                      the neon hero visuals; backs distill key product and event details for quick handoff.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Art direction, 3D integration, color strategy for handheld print,
-                        production-ready files aligned to booth visuals.
-                      </small>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                           data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                           alt="Monet ALIF booth panel tall blue gradient"
+                           data-caption="Monet ALIF booth panel – blue gradient hero wall designed as a primary booth anchor.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 1 – Monet ALIF hero panel (48×110) – main product anchor.
+                      </div>
                     </div>
-                    <div class="portfolio-thumb-bar">
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                           data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                           alt="KLIMT booth panel tall neon glass spine"
+                           data-caption="KLIMT booth panel – neon spine-in-a-glass scaled to supergraphic height.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 9 – KLIMT™ hero panel (48×110) – neon spine-in-a-glass feature.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                           data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                           alt="Mondrian modular booth panels"
+                           data-caption="Mondrian ALIF modular product panels forming a flexible grid-based wall.">
+                      <div class="portfolio-thumb-caption">
+                        Panels 3, 7, and 8 – Mondrian ALIF modular 40×40 product blocks.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                           data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                           alt="Wide Mondrian bridge panel"
+                           data-caption="Wide Mondrian bridging panel tying together the square Mondrian units.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 5 – Mondrian bridge banner (130×15) that links the product grid.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth Map.png"
+                           data-full="images/2025 NASS Booth Map.png"
+                           alt="NASS booth panel map"
+                           data-caption="Booth panel map showing panel IDs, sizes, and content assignments.">
+                      <div class="portfolio-thumb-caption">
+                        Booth panel map – master layout with IDs, dimensions, and positions.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                           data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                           alt="3D model of complete NASS booth"
+                           data-caption="3D modeling overview of the complete NASS booth system.">
+                      <div class="portfolio-thumb-caption">
+                        3D booth visualization – assembled Monet / KLIMT / Mondrian system.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Marketing Cards</h4>
+                  <p>
+                    Created palm-sized marketing cards that echo the NASS neon visual language.
+                    Fronts carry the hero glass visuals; backs compress product and event details
+                    for quick handoff at the booth or happy hour.
+                  </p>
+                  <small>
+                    Roles: Art direction, 3D integration, color strategy for handheld print,
+                    production-ready files aligned to booth and digital assets.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
                       <img
                         class="portfolio-thumb active"
                         src="images/2025 Nass - Marketing Card - front.png"
                         data-full="images/2025 Nass - Marketing Card - front.png"
-                        alt="NASS marketing card front – neon design"
-                        data-caption="NASS marketing card front – neon CTL glass hero visual aligned to the booth art direction."
+                        alt="NASS marketing card front neon glass design"
+                        data-caption="NASS marketing card front – neon CTL glass hero visual, scaled for small format print."
                       >
+                      <div class="portfolio-thumb-caption">
+                        Marketing card – front side featuring neon KLIMT™ glass hero.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
                       <img
                         class="portfolio-thumb"
                         src="images/2025 NASS - Marketing Card - back.png"
                         data-full="images/2025 NASS - Marketing Card - back.png"
-                        alt="NASS marketing card back – product and event details"
+                        alt="NASS marketing card back event details"
                         data-caption="NASS marketing card back – distilled product and event information for quick reference."
                       >
+                      <div class="portfolio-thumb-caption">
+                        Marketing card – back side with product + NASS event details.
+                      </div>
                     </div>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Format</div>
-                    <strong>Palm-sized takeaways</strong>
-                    <p>
-                      Cards sized for badge-holder pockets and quick exchanges while keeping legibility
-                      for fine product details.
-                    </p>
-                  </div>
-
-                  <div class="mini-card">
-                    <div class="mini-card-title">Consistency</div>
-                    <strong>On-theme with NASS visuals</strong>
-                    <p>
-                      Mirrors the booth invitation and poster aesthetics so the whole campaign reads as
-                      a unified visual ecosystem.
-                    </p>
                   </div>
                 </div>
               </div>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 4 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="4">
-              <div class="portfolio-meta-row">
-                <div>Tradeshow campaign • booth supergraphics • product storytelling</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 NASS</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>2025 NASS Campaign – Booth Panel System</h4>
-                    <p>
-                      Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF, each
-                      with its own hero image, color identity, and supporting copy that reads clearly
-                      from aisle distance.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Art direction, 3D integration, typographic hierarchy for long-distance reading,
-                        prepress for large-format fabric or rigid substrates.
-                      </small>
-                    </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-                        data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
-                        alt="Monet front booth panel – blue gradient with implant hero"
-                        data-caption="Monet ALIF booth panel – blue gradient hero wall used as a key booth anchor."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-                        data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
-                        alt="KLIMT front booth panel – warm neon spine-in-a-glass motif"
-                        data-caption="KLIMT booth panel – neon glass motif scaled to supergraphic height."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-                        data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
-                        alt="Mondrian front booth panels – modular grid of product visuals"
-                        data-caption="Mondrian ALIF modular panels – square product vignettes forming a cohesive wall system."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS Booth - Panel 5 - 130x15.png"
-                        data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
-                        alt="Wide Mondrian booth panel"
-                        data-caption="Wide Mondrian supergraphic used to tie together adjacent vertical panels."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-                        data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
-                        alt="3D modeling view of NASS booth"
-                        data-caption="3D modeling overview of the NASS booth system with all branded panels in place."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Trade Show Booth - 01.jpeg"
-                        data-full="images/2025 NASS - Trade Show Booth - 01.jpeg"
-                        alt="Booth angle view – hero wall"
-                        data-caption="Oblique booth angle highlighting the Monet and KLIMT hero walls."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Trade Show Booth - 02.jpeg"
-                        data-full="images/2025 NASS - Trade Show Booth - 02.jpeg"
-                        alt="Booth angle view – Mondrian panels"
-                        data-caption="Booth angle focusing on Mondrian ALIF modular panels."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Trade Show Booth - 03.jpeg"
-                        data-full="images/2025 NASS - Trade Show Booth - 03.jpeg"
-                        alt="Booth overview – full system"
-                        data-caption="Full 3D booth overview from corner perspective."
-                      >
+              <!-- OUTCOME CARD -->
+              <div class="mini-card mini-card-outcome">
+                <div class="mini-card-title">Outcome</div>
+                <strong>Campaign impact</strong>
+                <p>
+                  Strengthened CTL’s NASS identity with a unified neon visual language applied across
+                  print, booth, email, and QR analytics-driven landing concepts. The same core
+                  hero assets scale from pocket-sized handouts to floor-to-ceiling panels.
+                </p>
+                <div class="portfolio-thumb-bar">
+                  <div class="portfolio-thumb-wrap">
+                    <img
+                      class="portfolio-thumb"
+                      src="images/2025 NASS - Marketing Card - back.png"
+                      data-full="images/2025 NASS - Marketing Card - back.png"
+                      alt="NASS marketing card back event details"
+                      data-caption="NASS marketing card back – distilled product and event information for quick reference."
+                    >
+                    <div class="portfolio-thumb-caption">
+                      Marketing card – back side with product + NASS event details.
                     </div>
                   </div>
                 </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">System</div>
-                    <strong>Unified booth language</strong>
-                    <p>
-                      Shared type, motion-inspired gradients, and implant rendering style across all product lines.
-                    </p>
-                  </div>
-
-                  <div class="mini-card">
-                    <div class="mini-card-title">Scale</div>
-                    <strong>From invites to walls</strong>
-                    <p>
-                      Artwork planned from the start to scale between handheld invites, emails, and floor-to-ceiling panels.
-                    </p>
-                  </div>
-                </div>
               </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 5 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="5">
-              <div class="portfolio-meta-row">
-                <div>Tradeshow campaign • Happy hour invitations • Print &amp; digital</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 NASS</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>2025 NASS Campaign – Happy Hour Table Tents</h4>
-                    <p>
-                      Designed compact marketing cards echoing the NASS visual language. Fronts carry
-                      the neon hero visuals; backs distill key product and event details for quick handoff.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Art direction, 3D integration, color strategy for handheld print,
-                        production-ready files aligned to booth visuals.
-                      </small>
-                    </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/2025 NASS – Table Tent – Front.png"
-                        data-full="images/2025 NASS – Table Tent – Front.png"
-                        alt="NASS table tent front – neon design"
-                        data-caption="NASS table tent front – neon CTL glass hero image with stacked event details."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS – Table Tent – Back.png"
-                        data-full="images/2025 NASS – Table Tent – Back.png"
-                        alt="NASS table tent back – event and product info"
-                        data-caption="NASS table tent back – product highlights and event timing optimized for bar-top readability."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS – Table Tent –Unwrapped.png"
-                        data-full="images/2025 NASS – Table Tent –Unwrapped.png"
-                        alt="NASS table tent layout – flat dieline"
-                        data-caption="Flat dieline view of the NASS table tent showing full wrap layout."
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Format</div>
-                    <strong>Palm-sized takeaways</strong>
-                    <p>
-                      Cards sized for badge-holder pockets and quick exchanges while keeping legibility
-                      for fine product details.
-                    </p>
-                  </div>
-
-                  <div class="mini-card">
-                    <div class="mini-card-title">Consistency</div>
-                    <strong>On-theme with NASS visuals</strong>
-                    <p>
-                      Mirrors the booth invitation and poster aesthetics so the whole campaign reads as
-                      a unified visual ecosystem.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 6 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="6">
-              <div class="portfolio-meta-row">
-                <div>Tradeshow campaign • Happy hour invitations • Print &amp; digital</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 NASS</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>2025 NASS Campaign – Happy Hour Drink Menu</h4>
-                    <p>
-                      Designed compact marketing cards echoing the NASS visual language. Fronts carry
-                      the neon hero visuals; backs distill key product and event details for quick handoff.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Art direction, 3D integration, color strategy for handheld print,
-                        production-ready files aligned to booth visuals.
-                      </small>
-                    </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/2025 NASS - HAPPY HOUR - DRINK MENU.png"
-                        data-full="images/2025 NASS - HAPPY HOUR - DRINK MENU.png"
-                        alt="NASS happy hour drink menu – neon layout"
-                        data-caption="NASS Happy Hour drink menu – neon drink lineup with KLIMT-inspired implant garnishes."
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Format</div>
-                    <strong>Palm-sized takeaways</strong>
-                    <p>
-                      Cards sized for badge-holder pockets and quick exchanges while keeping legibility
-                      for fine product details.
-                    </p>
-                  </div>
-
-                  <div class="mini-card">
-                    <div class="mini-card-title">Consistency</div>
-                    <strong>On-theme with NASS visuals</strong>
-                    <p>
-                      Mirrors the booth invitation and poster aesthetics so the whole campaign reads as
-                      a unified visual ecosystem.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 7 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="7">
-              <div class="portfolio-meta-row">
-                <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 – Present</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>Dynamic QR Landing Pages for Product Lines</h4>
-                    <p>
-                      Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
-                      partner campaigns, optimized for phone-first viewing. Each layout matches
-                      printed collateral while embedding GA4 events and UTM tracking.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
-                        QR integration strategy and measurement planning.
-                      </small>
-                    </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/SpineWave - QR- 1 - 4x6-v3-01.png"
-                        data-full="images/SpineWave - QR- 1 - 4x6-v3-01.png"
-                        alt="Landing layout aligned with KLIMT invitation"
-                        data-caption="SpineWave QR card – phone-first layout aligned to KLIMT-inspired Neon hero visuals."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - QR- 1 - 4x6-v3-02.png"
-                        data-full="images/SpineWave - QR- 1 - 4x6-v3-02.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="SpineWave QR card variant – alternate layout for Mondrian ALIF messaging."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - QR- 1 - 4x6-v3-03.png"
-                        data-full="images/SpineWave - QR- 1 - 4x6-v3-03.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="SpineWave QR card variant – refined typography and CTA emphasis."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - QR- 1 - 4x6-v3-04.png"
-                        data-full="images/SpineWave - QR- 1 - 4x6-v3-04.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="SpineWave QR card variant – full-color panelized design."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        data-full="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        alt="Landing layout aligned with KLIMT invitation"
-                        data-caption="SpineWave flyer – 8.5x11 layout extending the QR concept into full-page print."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        data-full="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="SpineWave flyer variant – alternate color system and CTA structure."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        data-full="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        alt="Reference sheet – KLIMT, Mondrian ALIF, Monet"
-                        data-caption="SpineWave reference sheet summarizing KLIMT, Mondrian ALIF, Monet implants with QR-driven training links."
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Analytics</div>
-                    <strong>QR → GA4 funnel</strong>
-                    <p>
-                      Landing sections planned around key GA4 events like page views, scroll depth,
-                      PDF downloads, and RSVP clicks.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Structure</div>
-                    <strong>Microsite module system</strong>
-                    <p>
-                      Reusable content blocks for product overview, indications, technique PDFs, and
-                      training media so each product has a consistent story structure.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== CTL – CAMPAIGN 1 / PROJECT 8 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="1"
-                 data-project="8">
-              <div class="portfolio-meta-row">
-                <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 – Present</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div class="portfolio-project">
-                    <h4>Dynamic QR Landing Pages for Product Lines</h4>
-                    <p>
-                      Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
-                      partner campaigns, optimized for phone-first viewing. Each layout matches
-                      printed collateral while embedding GA4 events and UTM tracking.
-                    </p>
-                    <div>
-                      <small>
-                        Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
-                        QR integration strategy and measurement planning.
-                      </small>
-                    </div>
-                    <div class="portfolio-thumb-bar">
-                      <img
-                        class="portfolio-thumb active"
-                        src="images/2025 NASS - Wix HTML - Blue.png"
-                        data-full="images/2025 NASS - Wix HTML - Blue.png"
-                        alt="Landing layout aligned with KLIMT invitation"
-                        data-caption="Wix-based NASS landing page – blue Monet variant with analytics-ready CTAs."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Wix HTML - Yellow.png"
-                        data-full="images/2025 NASS - Wix HTML - Yellow.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="Wix-based NASS landing page – yellow Mondrian ALIF variant aligning to booth graphics."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/2025 NASS - Wix HTML - Green.png"
-                        data-full="images/2025 NASS - Wix HTML - Green.png"
-                        alt="Alternate landing layout for Mondrian ALIF"
-                        data-caption="Wix-based NASS landing page – green KLIMT variant for campaign A/B testing."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - QR- 1 - 4x6-v3-04.png"
-                        data-full="images/SpineWave - QR- 1 - 4x6-v3-04.png"
-                        alt="SpineWave QR card variant"
-                        data-caption="SpineWave QR design reused as a conceptual testbed for CTL landing page layouts."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        data-full="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                        alt="SpineWave flyer – Monet and KLIMT alignment"
-                        data-caption="SpineWave flyer used as an early layout study for CTL microsite blocks."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        data-full="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                        alt="SpineWave flyer variant"
-                        data-caption="Alternate SpineWave flyer variant for testing readability and CTA density."
-                      >
-                      <img
-                        class="portfolio-thumb"
-                        src="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        data-full="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                        alt="Reference sheet – KLIMT, Mondrian ALIF, Monet"
-                        data-caption="Reference sheet summarizing KLIMT, Mondrian ALIF, and Monet designs used as content planning input."
-                      >
-                    </div>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Analytics</div>
-                    <strong>QR → GA4 funnel</strong>
-                    <p>
-                      Landing sections planned around key GA4 events like page views, scroll depth,
-                      PDF downloads, and RSVP clicks.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Structure</div>
-                    <strong>Microsite module system</strong>
-                    <p>
-                      Reusable content blocks for product overview, indications, technique PDFs, and
-                      training media so each product has a consistent story structure.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-
-      <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 1 ==================== -->
-<div class="portfolio-panel"
-     data-category="ctl"
-     data-campaign="2"
-     data-project="1">
-
-  <!-- META -->
-  <div class="portfolio-meta-row">
-    <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-    <div class="portfolio-meta-right">
-      <span>CTL Amedica</span>
-      <span>2025 – Present</span>
-    </div>
-  </div>
-
-  <!-- OPTIONAL DESCRIPTION UNDER HEADLINE -->
-  <p class="portfolio-meta-desc">
-    Spin-off layouts and reference sheets built from the same QR + GA4 logic as the core
-    NASS microsites, focused on SpineWave collaboration and product overviews.
-  </p>
-
-  <!-- ================= ALL PANELS: INTRO / PROJECT / OUTCOME ================= -->
-  <div class="portfolio-secondary-grid">
-
-    <!-- INTRODUCTORY PANEL (WITH 6-BUTTON NAV) -->
-    <div class="mini-card">
-      <div class="mini-card-title">Analytics</div>
-      <strong>QR → GA4 funnel</strong>
-      <p>
-        Landing sections planned around key GA4 events like page views, scroll depth,
-        PDF downloads, and RSVP clicks.
-      </p>
-
-      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS – MATCHES CTL CAMPAIGN 1) -->
-      <div class="portfolio-controls">
-        <!-- PROJECT NAV -->
-        <button class="portfolio-arrow" data-dir="prev">
-          <span class="icon">←</span>
-          <span class="label">Previous Project</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="next">
-          <span class="icon">→</span>
-          <span class="label">Next Project</span>
-        </button>
-
-        <!-- CAMPAIGN NAV -->
-        <button class="portfolio-arrow" data-dir="campaign-prev">
-          <span class="icon">↑</span>
-          <span class="label">Previous Campaign</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="campaign-next">
-          <span class="icon">↓</span>
-          <span class="label">Next Campaign</span>
-        </button>
-
-        <!-- EMPLOYER / JOB NAV -->
-        <button class="portfolio-arrow" data-dir="panel-prev">
-          <span class="icon">«</span>
-          <span class="label">Previous Employer</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="panel-next">
-          <span class="icon">»</span>
-          <span class="label">Next Employer</span>
-        </button>
-      </div>
-      <!-- END NAV BAR -->
-    </div>
-    <!-- ================= END INTRO PANEL ================= -->
-
-    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
-    <div class="mini-card mini-card-projects">
-      <div class="portfolio-layout">
-        <div class="portfolio-primary">
-          <div class="portfolio-project">
-            <h4>Dynamic QR Landing Pages for Product Lines</h4>
-            <p>
-              Built branded landing page layouts for Monet, Mondrian ALIF, KLIMT, and
-              partner campaigns, optimized for phone-first viewing. Each layout matches
-              printed collateral while embedding GA4 events and UTM tracking.
-            </p>
-            <div>
-              <small>
-                Roles: Wireframes, HTML/CSS styling concepts, analytics-driven layout logic,
-                QR integration strategy and measurement planning.
-              </small>
-            </div>
-
-            <div class="portfolio-thumb-bar">
-              <img
-                class="portfolio-thumb active"
-                src="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                data-full="images/SpineWave - Flyer - 1 - 8.5x11.png"
-                alt="Landing layout aligned with KLIMT invitation"
-                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-              >
-              <img
-                class="portfolio-thumb"
-                src="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                data-full="images/SpineWave - Flyer - 2 - 8.5x11.jpg"
-                alt="Alternate landing layout for Mondrian ALIF"
-                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-              >
-              <img
-                class="portfolio-thumb"
-                src="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                data-full="images/SpineWave - Reference Sheet - KLIMT-MONDRIAN-ALIF-MONET.png"
-                alt="Alternate landing layout for Mondrian ALIF"
-                data-caption="2025 NASS Happy Hour table tent – front panel. Neon CTL glass hero image, event title and time in the main visual hierarchy, with subtle spine motif and GA4-tracked QR code for RSVPs."
-              >
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <!-- ================= END PROJECT PANEL ================= -->
 
-    <!-- ================= OUTCOME PANEL (BOTTOM) ================= -->
-    <div class="mini-card mini-card-outcome">
-      <div class="mini-card-title">Outcome</div>
-      <strong>Extending the microsite system</strong>
-      <p>
-        Took the same QR and analytics logic from the NASS landings and applied it to
-        SpineWave and product-overview collateral, keeping tracking and visual language
-        consistent across brands.
-      </p>
-    </div>
-    <!-- ================= END OUTCOME PANEL ================= -->
-
-  </div> <!-- end .portfolio-secondary-grid -->
-
-</div> <!-- end .portfolio-panel -->
-
-
-       <!-- ==================== CTL – CAMPAIGN 2 / PROJECT 2 ==================== -->
-<div class="portfolio-panel"
-     data-category="ctl"
-     data-campaign="2"
-     data-project="2">
-
-  <!-- META -->
-  <div class="portfolio-meta-row">
-    <div>Analytics-ready microsites • QR tracking • GA4 dashboards</div>
-    <div class="portfolio-meta-right">
-      <span>CTL Amedica</span>
-      <span>2025 – Present</span>
-    </div>
-  </div>
-
-  <!-- DESCRIPTION UNDER HEADLINE -->
-  <p class="portfolio-meta-desc">
-    Monet overview cards and reference layouts that tie directly into the same QR + GA4
-    funnel as the rest of the NASS ecosystem, tuned for quick-reading surgeons.
-  </p>
-
-  <!-- ================= ALL PANELS: INTRO / PROJECT / OUTCOME ================= -->
-  <div class="portfolio-secondary-grid">
-
-    <!-- INTRODUCTORY PANEL (WITH 6-BUTTON NAV) -->
-    <div class="mini-card">
-      <div class="mini-card-title">Analytics</div>
-      <strong>QR → GA4 funnel</strong>
-      <p>
-        Landing sections planned around key GA4 events like page views, scroll depth,
-        PDF downloads, and RSVP clicks.
-      </p>
-
-      <!-- NAVIGATION BAR (CENTERED, 6 BUTTONS – MATCHES CTL CAMPAIGN 1) -->
-      <div class="portfolio-controls">
-        <!-- PROJECT NAV -->
-        <button class="portfolio-arrow" data-dir="prev">
-          <span class="icon">←</span>
-          <span class="label">Previous Project</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="next">
-          <span class="icon">→</span>
-          <span class="label">Next Project</span>
-        </button>
-
-        <!-- CAMPAIGN NAV -->
-        <button class="portfolio-arrow" data-dir="campaign-prev">
-          <span class="icon">↑</span>
-          <span class="label">Previous Campaign</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="campaign-next">
-          <span class="icon">↓</span>
-          <span class="label">Next Campaign</span>
-        </button>
-
-        <!-- EMPLOYER / JOB NAV -->
-        <button class="portfolio-arrow" data-dir="panel-prev">
-          <span class="icon">«</span>
-          <span class="label">Previous Employer</span>
-        </button>
-
-        <button class="portfolio-arrow" data-dir="panel-next">
-          <span class="icon">»</span>
-          <span class="label">Next Employer</span>
-        </button>
-      </div>
-      <!-- END NAV BAR -->
-    </div>
-    <!-- ================= END INTRO PANEL ================= -->
-
-    <!-- ================= PROJECT PANEL (MIDDLE) ================= -->
-    <div class="mini-card mini-card-projects">
-      <div class="portfolio-layout">
-        <div class="portfolio-primary">
-          <div class="portfolio-project">
-            <h4>Monet Overview – SpineWave Collaboration</h4>
-            <p>
-              Branded Monet overview cards that echo the implant’s visual hierarchy and
-              lay the groundwork for analytics-ready landing pages and training content.
-            </p>
-            <div>
-              <small>
-                Roles: Layout, content hierarchy, and QR+landing integration strategy
-                for Monet-focused education and marketing.
-              </small>
+          <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: ctl / CAMPAIGN: 2 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="ctl"
+               data-campaign="2"
+               data-project="1">
+            <div class="portfolio-meta-row">
+              <div class="portfolio-nav-title">CTL Amedica</div>
+              <div class="portfolio-meta-right">
+                <span class="portfolio-nav-title">2025 NASS</span>
+              </div>
             </div>
 
-            <div class="portfolio-thumb-bar">
-              <img
-                class="portfolio-thumb active"
-                src="images/SpineWave - Monet Overview - Front.png"
-                data-full="images/SpineWave - Monet Overview - Front.png"
-                alt="Monet overview front"
-                data-caption="Monet overview card – front panel with implant hero and key positioning statements."
-              >
-              <img
-                class="portfolio-thumb"
-                src="images/SpineWave - Monet Overview - Back.png"
-                data-full="images/SpineWave - Monet Overview - Back.png"
-                alt="Monet overview back"
-                data-caption="Monet overview card – back panel with indications, feature callouts, and QR-driven next steps."
-              >
+            <p class="portfolio-meta-desc">
+              Integrated NASS 2025 tradeshow work, connecting QR-driven happy hour invitations,
+              GA4 landing pages, and large-format booth graphics into one cohesive campaign
+              narrative that’s easy to track and easy to read from aisle distance.
+            </p>
+
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
+              </div>
+
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Happy Hour Invitations</h4>
+                  <p>
+                    Concepted and produced NASS 2025 invitation artwork tying neon cocktails to
+                    KLIMT™ implant imagery. Designed to work both digitally and in print,
+                    with QR pathways to GA4-ready landing pages.
+                  </p>
+                  <small>
+                    Roles: Art direction, campaign concept, 3D implant integration,
+                    layout design, print-ready prep for handouts and email-safe versions.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/2025 NASS Happy Hour - 01.png"
+                           data-full="images/2025 NASS Happy Hour - 01.png"
+                           alt="2025 NASS Happy Hour invitation teal neon variant"
+                           data-caption="2025 NASS Happy Hour invitation – teal neon variant built around the KLIMT glass hero.">
+                      <div class="portfolio-thumb-caption">
+                        Teal neon KLIMT™ NASS invitation – primary hero variant.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Happy Hour - 02.png"
+                           data-full="images/2025 NASS Happy Hour - 02.png"
+                           alt="2025 NASS Happy Hour invitation magenta neon variant"
+                           data-caption="2025 NASS Happy Hour invitation – magenta neon colorway for A/B visual testing.">
+                      <div class="portfolio-thumb-caption">
+                        Magenta neon KLIMT™ NASS invitation – alternate colorway.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Happy Hour - 03.png"
+                           data-full="images/2025 NASS Happy Hour - 03.png"
+                           alt="2025 NASS Happy Hour invitation alternate composition"
+                           data-caption="Alternate neon composition maintaining the same core implant-glass concept.">
+                      <div class="portfolio-thumb-caption">
+                        Alternate composition – same hero glass concept with layout variation.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Booth Panel System</h4>
+                  <p>
+                    Designed a suite of tall booth panels for Monet, KLIMT, and Mondrian ALIF. Each
+                    line gets its own color identity, hero implant image, and aisle-distance
+                    typography tuned for fast scanning.
+                  </p>
+                  <small>
+                    Roles: Art direction, 3D integration, typographic hierarchy,
+                    prepress for large-format substrates.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                           data-full="images/2025 NASS Booth - Panel 1 - Front (Monet) - 48x110.png"
+                           alt="Monet ALIF booth panel tall blue gradient"
+                           data-caption="Monet ALIF booth panel – blue gradient hero wall designed as a primary booth anchor.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 1 – Monet ALIF hero panel (48×110) – main product anchor.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                           data-full="images/2025 NASS Booth - Panel 9 - Front (KLIMT) - 48x110.png"
+                           alt="KLIMT booth panel tall neon glass spine"
+                           data-caption="KLIMT booth panel – neon spine-in-a-glass scaled to supergraphic height.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 9 – KLIMT™ hero panel (48×110) – neon spine-in-a-glass feature.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                           data-full="images/2025 NASS Booth - Panel 3-7-8 - Front (Mondrian) - 40x40.png"
+                           alt="Mondrian modular booth panels"
+                           data-caption="Mondrian ALIF modular product panels forming a flexible grid-based wall.">
+                      <div class="portfolio-thumb-caption">
+                        Panels 3, 7, and 8 – Mondrian ALIF modular 40×40 product blocks.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                           data-full="images/2025 NASS Booth - Panel 5 - 130x15.png"
+                           alt="Wide Mondrian bridge panel"
+                           data-caption="Wide Mondrian bridging panel tying together the square Mondrian units.">
+                      <div class="portfolio-thumb-caption">
+                        Panel 5 – Mondrian bridge banner (130×15) that links the product grid.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS Booth Map.png"
+                           data-full="images/2025 NASS Booth Map.png"
+                           alt="NASS booth panel map"
+                           data-caption="Booth panel map showing panel IDs, sizes, and content assignments.">
+                      <div class="portfolio-thumb-caption">
+                        Booth panel map – master layout with IDs, dimensions, and positions.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                           data-full="images/2025 NASS - Trade Show Booth - 3D Modeling.jpeg"
+                           alt="3D model of complete NASS booth"
+                           data-caption="3D modeling overview of the complete NASS booth system.">
+                      <div class="portfolio-thumb-caption">
+                        3D booth visualization – assembled Monet / KLIMT / Mondrian system.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Marketing Cards</h4>
+                  <p>
+                    Created palm-sized marketing cards that echo the NASS neon visual language.
+                    Fronts carry the hero glass visuals; backs compress product and event details
+                    for quick handoff at the booth or happy hour.
+                  </p>
+                  <small>
+                    Roles: Art direction, 3D integration, color strategy for handheld print,
+                    production-ready files aligned to booth and digital assets.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb active"
+                        src="images/2025 Nass - Marketing Card - front.png"
+                        data-full="images/2025 Nass - Marketing Card - front.png"
+                        alt="NASS marketing card front neon glass design"
+                        data-caption="NASS marketing card front – neon CTL glass hero visual, scaled for small format print."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Marketing card – front side featuring neon KLIMT™ glass hero.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="NASS marketing card back event details"
+                        data-caption="NASS marketing card back – distilled product and event information for quick reference."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Marketing card – back side with product + NASS event details.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- OUTCOME CARD -->
+              <div class="mini-card mini-card-outcome">
+                <div class="mini-card-title">Outcome</div>
+                <strong>Campaign impact</strong>
+                <p>
+                  Strengthened CTL’s NASS identity with a unified neon visual language applied across
+                  print, booth, email, and QR analytics-driven landing concepts. The same core
+                  hero assets scale from pocket-sized handouts to floor-to-ceiling panels.
+                </p>
+                <div class="portfolio-thumb-bar">
+                  <div class="portfolio-thumb-wrap">
+                    <img
+                      class="portfolio-thumb"
+                      src="images/2025 NASS - Marketing Card - back.png"
+                      data-full="images/2025 NASS - Marketing Card - back.png"
+                      alt="NASS marketing card back event details"
+                      data-caption="NASS marketing card back – distilled product and event information for quick reference."
+                    >
+                    <div class="portfolio-thumb-caption">
+                      Marketing card – back side with product + NASS event details.
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+
+          <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: diesel / CAMPAIGN: 1 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="diesel"
+               data-campaign="1"
+               data-project="1">
+               <div class="portfolio-meta-row">
+                <div class="portfolio-nav-title">Diesel Displays</div>
+                <div class="portfolio-meta-right">
+                    <span class="portfolio-nav-title">Large-Format Environments</span>
+          </div>
         </div>
-      </div>
-    </div>
-    <!-- ================= END PROJECT PANEL ================= -->
+          <p class="portfolio-meta-desc">
+            Prepress and large-format display work for trade show and retail environments,
+            building color-accurate, production-ready graphics that survive scaling from proofs
+            to multi-panel wall systems.
+          </p>
 
-    <!-- ================= OUTCOME PANEL (BOTTOM) ================= -->
-    <div class="mini-card mini-card-outcome">
-      <div class="mini-card-title">Outcome</div>
-      <strong>Product-specific story blocks</strong>
-      <p>
-        Gave Monet its own focused storytelling surface that still plugs cleanly into the
-        broader NASS QR and analytics system, making it easier to add new products later.
-      </p>
-    </div>
-    <!-- ================= END OUTCOME PANEL ================= -->
-
-  </div> <!-- end .portfolio-secondary-grid -->
-
-</div> <!-- end .portfolio-panel -->
-
-            <!-- ==================== CTL – CAMPAIGN 3 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="ctl"
-                 data-campaign="3"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Patient-facing education • Surgical explanation graphics</div>
-                <div class="portfolio-meta-right">
-                  <span>CTL Amedica</span>
-                  <span>2025 – Present</span>
-                </div>
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
               </div>
 
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>ACDF Educational One-Pagers</h4>
-                    <p>
-                      Designed ACDF procedure explainer sheets that translate surgeon-level
-                      language into clear, patient-ready visuals. Focused on spine anatomy,
-                      before/after diagrams, and recovery timelines while maintaining regulatory
-                      tone.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Diagram layout, iconography, copy structuring, print optimization for
-                      clinic handouts and conference tables.
-                    </small>
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Happy Hour Invitations</h4>
+                  <p>
+                    Concepted and produced NASS 2025 invitation artwork tying neon cocktails to
+                    KLIMT™ implant imagery. Designed to work both digitally and in print,
+                    with QR pathways to GA4-ready landing pages.
+                  </p>
+                  <small>
+                    Roles: Art direction, campaign concept, 3D implant integration,
+                    layout design, print-ready prep for handouts and email-safe versions.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/desl-color-test.png"
+                           data-full="images/desl-color-test.png"
+                           alt="Diesel color exploration"
+                           data-caption="Color testing for a Diesel Displays project, tuned for large-format print.">
+                      <div class="portfolio-thumb-caption">
+                        Diesel Displays – color test for large-format environment.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/desl-mock-up.svg"
+                           data-full="images/desl-mock-up.svg"
+                           alt="Diesel mockup"
+                           data-caption="Environmental mockup showcasing Diesel-branded graphics in context.">
+                      <div class="portfolio-thumb-caption">
+                        Diesel Displays – environmental mockup rendering.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="Alternate composition"
+                           data-caption="Alternate neon composition repurposed for client testing.">
+                      <div class="portfolio-thumb-caption">
+                        Alternate layout repurposed for Diesel-style testing.
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Visuals</div>
-                    <strong>Anatomy &amp; implant callouts</strong>
-                    <p>
-                      Exploded views and labeled diagrams that guide patients through where the
-                      implant sits and what changes post-surgery.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Use Cases</div>
-                    <strong>Clinic &amp; event print</strong>
-                    <p>
-                      Formatted for 8.5&quot;×11&quot; with QR links for deeper technical PDFs
-                      and surgeon training content.
-                    </p>
+                <!-- OUTCOME CARD -->
+                <div class="mini-card mini-card-outcome">
+                  <div class="mini-card-title">Outcome</div>
+                  <strong>Campaign impact</strong>
+                  <p>
+                    Strengthened Diesel’s ability to preview color, scale, and hierarchy before routing
+                    assets into production, reducing reprints and aligning expectations.
+                  </p>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="Reference card back"
+                        data-caption="Reference layout used as a baseline for production alignment."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Reference layout used as alignment guide for production.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-  <!-- ==================== DIESEL – CAMPAIGN 1 / PROJECT 1 ==================== -->
-<div class="portfolio-panel"
-     data-category="diesel"
-     data-campaign="1"
-     data-project="1">
-
-  <!-- META -->
-  <div class="portfolio-meta-row">
-    <div>Large-format prepress • Retail &amp; event graphics</div>
-    <div class="portfolio-meta-right">
-      <span>Diesel Displays</span>
-      <span>2023 – 2025</span>
-    </div>
+          <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: newmark / CAMPAIGN: 1 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="newmark"
+               data-campaign="1"
+               data-project="1">
+<div class="portfolio-meta-row">
+  <div class="portfolio-nav-title">Newmark Real Estate</div>
+  <div class="portfolio-meta-right">
+    <span class="portfolio-nav-title">Property Marketing Sets</span>
   </div>
+</div>
+
+<p class="portfolio-meta-desc">
+  Integrated print and digital collateral for commercial real estate listings:
+  brochures, site plans, email graphics, and signage designed to keep branding
+  consistent from pitch decks to on-site installations.
+</p>
 
 
-  <!-- ================= INTRODUCTORY PANEL (TOP) ================= -->
-  <div class="portfolio-secondary-grid">
-    <div class="mini-card">
-      <div class="mini-card-title">Workflow</div>
-      <strong>Multi-printer color pipelines</strong>
-      <p>
-        Managed RIP calibration, layout planning, and substrate-specific output logic across
-        multiple printers, cutters, and laminators.
-      </p>
-    </div>
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
+              </div>
 
-    <div class="mini-card">
-      <div class="mini-card-title">Consistency</div>
-      <strong>Cross-hardware color strategy</strong>
-      <p>
-        Ensured color accuracy and bleed alignment for high-volume retail graphics and event
-        materials across all print devices.
-      </p>
-    </div>
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>2025 NASS Campaign – Happy Hour Invitations</h4>
+                  <p>
+                    Concepted and produced NASS 2025 invitation artwork tying neon cocktails to
+                    KLIMT™ implant imagery. Designed to work both digitally and in print,
+                    with QR pathways to GA4-ready landing pages.
+                  </p>
+                  <small>
+                    Roles: Art direction, campaign concept, 3D implant integration,
+                    layout design, print-ready prep for handouts and email-safe versions.
+                  </small>
+
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/desl-color-test.png"
+                           data-full="images/desl-color-test.png"
+                           alt="Color test"
+                           data-caption="Color and value testing used as a baseline for Newmark real estate collateral.">
+                      <div class="portfolio-thumb-caption">
+                        Newmark – base color/value exploration for marketing sets.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/desl-mock-up.svg"
+                           data-full="images/desl-mock-up.svg"
+                           alt="Mockup"
+                           data-caption="Mocked up graphics in a real estate environment to evaluate scale and legibility.">
+                      <div class="portfolio-thumb-caption">
+                        Newmark – signage and wall graphic mockup in context.
+                      </div>
+                    </div>
+
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="Alternate composition"
+                           data-caption="Alternate composition used as a layout reference.">
+                      <div class="portfolio-thumb-caption">
+                        Layout reference leveraged for brochure and flyer frames.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- OUTCOME CARD -->
+                <div class="mini-card mini-card-outcome">
+                  <div class="mini-card-title">Outcome</div>
+                  <strong>Campaign impact</strong>
+                  <p>
+                    Helped unify Newmark’s print and digital collateral by stress-testing layouts and
+                    colors in realistic environments before committing to runs.
+                  </p>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="Back layout reference"
+                        data-caption="Tight information layout that informed Newmark one-pagers."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Back-of-card layout language repurposed into Newmark one-pagers.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ========= EXAMPLE PORTFOLIO PANEL =========
+               JOB: mimaki / CAMPAIGN: 1 / PROJECT: 1
+          -->
+          <div class="portfolio-panel"
+               data-category="mimaki"
+               data-campaign="1"
+               data-project="1">
+<div class="portfolio-meta-row">
+  <div class="portfolio-nav-title">Mimaki USA</div>
+  <div class="portfolio-meta-right">
+    <span class="portfolio-nav-title">Print &amp; Color Demos</span>
   </div>
-
-<!-- ================= INTRO NAV BUTTON ROW (6 BUTTONS) ================= -->
-<div class="portfolio-footer-row">
-  <!-- EMPLOYER SWITCH -->
-  <button class="portfolio-arrow"
-          data-dir="job-prev"
-          aria-label="Previous employer">
-    <span class="icon">↑</span>
-    Previous employer
-  </button>
-
-  <button class="portfolio-arrow"
-          data-dir="job-next"
-          aria-label="Next employer">
-    <span class="icon">↓</span>
-    Next employer
-  </button>
-
-  <!-- CAMPAIGN SWITCH -->
-  <button class="portfolio-arrow"
-          data-dir="campaign-prev"
-          aria-label="Previous campaign">
-    <span class="icon">↑</span>
-    Previous campaign
-  </button>
-
-  <button class="portfolio-arrow"
-          data-dir="campaign-next"
-          aria-label="Next campaign">
-    <span class="icon">↓</span>
-    Next campaign
-  </button>
-
-  <!-- PROJECT SWITCH -->
-  <button class="portfolio-arrow"
-          data-dir="project-prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-    Previous project
-  </button>
-
-  <button class="portfolio-arrow"
-          data-dir="project-next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-    Next project
-  </button>
-</div>
-<!-- =============== END INTRO NAV BUTTON ROW =================== -->
-
-
-  <!-- ============== END INTRO PANEL ============== -->
-
-
-
-  <!-- ================= PROJECT CONTENT ================= -->
-  <div class="portfolio-layout">
-
-    <div class="portfolio-primary">
-      <div class="portfolio-project">
-
-        <h4>Large-Format Production Systems</h4>
-        <p>
-          Led prepress workflow for high-volume retail and exhibit graphics. Ensured color
-          consistency, bleed reliability, substrate accuracy, and mechanical compatibility
-          across a wide range of materials and hardware systems.
-        </p>
-
-        <div>
-          <small>
-            Roles: Prepress supervision, RIP setup, color management, substrate planning,
-            resolution checks, and production troubleshooting.
-          </small>
-        </div>
-
-        <div class="portfolio-thumb-bar">
-          <img
-            class="portfolio-thumb active"
-            src="images/desl-color-test.png"
-            data-full="images/desl-color-test.png"
-            alt="Diesel Displays large-format graphics mockup"
-            data-caption="Color calibration and test output for multi-printer workflow."
-          >
-
-          <img
-            class="portfolio-thumb"
-            src="images/desl-mock-up.svg"
-            data-full="images/desl-mock-up.svg"
-            alt="Diesel Displays mockup layout"
-            data-caption="Mockup example used for print verification and substrate fitting."
-          >
-        </div>
-
-      </div>
-    </div>
-
-
-    <!-- SUPPORTING MINI-CARDS (these stay in the middle) -->
-    <div class="portfolio-secondary-grid">
-      <div class="mini-card">
-        <div class="mini-card-title">Workflow</div>
-        <strong>Multi-printer RIP pipelines</strong>
-        <p>
-          Coordinated layout, scaling, and color accuracy across various printers
-          and finishing hardware.
-        </p>
-      </div>
-
-      <div class="mini-card">
-        <div class="mini-card-title">Quality Control</div>
-        <strong>Error-prevention systems</strong>
-        <p>
-          Standardized checks for resolution, tiling accuracy, and hardware compatibility
-          to eliminate reprints.
-        </p>
-      </div>
-    </div>
-
-  </div>
-  <!-- ================= END PROJECT CONTENT ================= -->
-
-
-
-  <!-- ================= CONCLUSION PANEL (BOTTOM) ================= -->
-  <div class="portfolio-secondary-grid">
-
-    <div class="mini-card">
-      <div class="mini-card-title">Outcome</div>
-      <strong>Reliable high-volume precision</strong>
-      <p>
-        Reduced waste, improved color reliability across devices, and maintained consistent
-        output standards for retail and event environments.
-      </p>
-    </div>
-
-    <div class="mini-card">
-      <div class="mini-card-title">Role & Tools</div>
-      <strong>Technical execution</strong>
-      <p>
-        Managed RIP systems, color profiles, on-press adjustments, and substrate-specific
-        production workflows end-to-end.
-      </p>
-    </div>
-
-  </div>
-  <!-- ================= END CONCLUSION PANEL ================= -->
-
 </div>
 
+<p class="portfolio-meta-desc">
+  Demo artwork and test layouts tuned for Mimaki hardware, stressing gradients,
+  neon color, and fine detail so sales and training teams can show exactly what
+  the printers can do across different inks and substrates.
+</p>
 
-            <!-- ==================== NEWMARK – CAMPAIGN 1 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="newmark"
-                 data-campaign="1"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Commercial real estate • Marketing packages</div>
-                <div class="portfolio-meta-right">
-                  <span>Newmark Real Estate</span>
-                  <span>2022 – 2023</span>
-                </div>
+            <div class="portfolio-secondary-grid">
+              <!-- INTRO CARD -->
+              <div class="mini-card mini-card-intro">
+                <div class="mini-card-title">Overview</div>
+                <strong>KLIMT™ Neon NASS Ecosystem</strong>
+                <p>
+                  A unified set of invites, marketing cards, booth panels, and landing page concepts
+                  all built around a neon “spine-in-a-glass” motif for CTL’s NASS 2025 presence.
+                </p>
               </div>
 
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Property Marketing Systems</h4>
-                    <p>
-                      Built templated yet flexible visual systems for listing brochures, email
-                      campaigns, and signage. Balanced investor-ready polish with quick-turn
-                      production needs.
-                    </p>
-                  </div>
-                  <div>
-                    <small>Roles: Layout design, print preparation, digital asset organization.</small>
-                  </div>
-                </div>
+              <!-- PROJECTS CARD -->
+              <div class="mini-card mini-card-projects">
+                <!-- PROJECT 1 -->
+                <div class="portfolio-project">
+                  <h4>Print &amp; Color System Demos</h4>
+                  <p>
+                    Used neon-heavy artwork to demo Mimaki print capabilities: gradients, fine detail,
+                    and deep blacks across test substrates and inks.
+                  </p>
+                  <small>
+                    Roles: Prepress setup, color tuning for CMYK and specialty inks,
+                    layout optimization for live demo environments.
+                  </small>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Print</div>
-                    <strong>Brochures &amp; offering memorandums</strong>
-                    <p>
-                      Multi-page layouts that integrate maps, floorplans, and financial summaries.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Digital</div>
-                    <strong>Email &amp; web graphics</strong>
-                    <p>
-                      Responsive email headers and social tiles optimized for brokerage distribution.
-                    </p>
-                  </div>
-                </div>
-              </div>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb active"
+                           src="images/desl-color-test.png"
+                           data-full="images/desl-color-test.png"
+                           alt="Mimaki color test"
+                           data-caption="Color stress test artwork tuned for Mimaki print demos.">
+                      <div class="portfolio-thumb-caption">
+                        Mimaki – neon color stress test for demo prints.
+                      </div>
+                    </div>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/desl-mock-up.svg"
+                           data-full="images/desl-mock-up.svg"
+                           alt="Mimaki mockup"
+                           data-caption="Graphics mocked into a booth-like setting for demo presentations.">
+                      <div class="portfolio-thumb-caption">
+                        Mimaki – mockup for demo wall and banner graphics.
+                      </div>
+                    </div>
 
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== MIMAKI – CAMPAIGN 1 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="mimaki"
-                 data-campaign="1"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>UV print design • Window graphics • Demo workflows</div>
-                <div class="portfolio-meta-right">
-                  <span>Mimaki USA</span>
-                  <span>2019 – 2021</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Multilayer UV Printing – 4-Layer Window Graphic</h4>
-                    <p>
-                      Designed a window graphic that transitions from a family day scene to an
-                      underwater night scene using Mimaki’s 4-layer UV print process. Built
-                      precise layer alignment to maintain readability through glass.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Layered print design, UV production workflow, mockup composition.
-                    </small>
+                    <div class="portfolio-thumb-wrap">
+                      <img class="portfolio-thumb"
+                           src="images/2025 NASS INVITATION - 3.png"
+                           data-full="images/2025 NASS INVITATION - 3.png"
+                           alt="Alternate composition"
+                           data-caption="Alternate composition to compare ink sets and substrates.">
+                      <div class="portfolio-thumb-caption">
+                        Alternate layout used to compare inksets and media profiles.
+                      </div>
+                    </div>
                   </div>
                 </div>
 
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Process</div>
-                    <strong>4-layer UV stack</strong>
-                    <p>
-                      Coordinated CMYK, white, and backing layers to shift imagery as backlighting changes.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Mockups</div>
-                    <strong>Showroom &amp; trade visuals</strong>
-                    <p>
-                      Photorealistic window mockups to communicate the effect under on/off lighting conditions.
-                    </p>
+                <!-- OUTCOME CARD -->
+                <div class="mini-card mini-card-outcome">
+                  <div class="mini-card-title">Outcome</div>
+                  <strong>Print demo results</strong>
+                  <p>
+                    Enabled clear side-by-side comparisons of lighting, gradients, and fine detail
+                    across Mimaki hardware, supporting sales and training conversations.
+                  </p>
+                  <div class="portfolio-thumb-bar">
+                    <div class="portfolio-thumb-wrap">
+                      <img
+                        class="portfolio-thumb"
+                        src="images/2025 NASS - Marketing Card - back.png"
+                        data-full="images/2025 NASS - Marketing Card - back.png"
+                        alt="Back design reference"
+                        data-caption="Compact back-of-card design used as a reference for demo labels."
+                      >
+                      <div class="portfolio-thumb-caption">
+                        Label-style layout used as a blueprint for demo descriptions.
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
 
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== MIMAKI – CAMPAIGN 1 / PROJECT 2 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="mimaki"
-                 data-campaign="1"
-                 data-project="2">
-              <div class="portfolio-meta-row">
-                <div>Vehicle graphics • Demo wraps • Color workflows</div>
-                <div class="portfolio-meta-right">
-                  <span>Mimaki USA</span>
-                  <span>2019 – 2021</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Vehicle Wrap Demo Series</h4>
-                    <p>
-                      Supported demo vehicle wraps that highlight Mimaki’s color range and print
-                      precision. Designed sample layouts with bold typography, gradients, and
-                      contour-aware composition for installers.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Layout concepts, panel breakdowns, and print-ready files tailored to installer workflows.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Layout</div>
-                    <strong>Panel-aware design</strong>
-                    <p>
-                      Planned typography and focal imagery to avoid seam breaks and door gaps.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Production</div>
-                    <strong>Color-rich demo graphics</strong>
-                    <p>
-                      Used saturated gradients and fine detail to showcase printer capabilities in showrooms and events.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== MIMAKI – CAMPAIGN 2 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="mimaki"
-                 data-campaign="2"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Backlit fabric • Exhibition demos</div>
-                <div class="portfolio-meta-right">
-                  <span>Mimaki USA</span>
-                  <span>2019 – 2021</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Backlit Fabric Lightbox Campaign</h4>
-                    <p>
-                      Created high-contrast artwork for backlit fabric frames, designed to hold
-                      saturation and detail both lit and unlit. Emphasized gradients and subtle
-                      textures that take advantage of transmitted light.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Color planning, composition, and backlit-specific prepress adjustments.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Visual Strategy</div>
-                    <strong>Lit vs. unlit legibility</strong>
-                    <p>
-                      Balanced highlight and shadow regions so messaging and imagery read clearly in any environment.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Applications</div>
-                    <strong>Showroom &amp; trade lightboxes</strong>
-                    <p>
-                      Framed pieces used as anchor visuals in demos and display booths.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== OTHER – CAMPAIGN 1 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="other"
-                 data-campaign="1"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Brand identity • Vector logo systems</div>
-                <div class="portfolio-meta-right">
-                  <span>Independent Clients</span>
-                  <span>Ongoing</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Vector Logo Series</h4>
-                    <p>
-                      Developed a suite of vector logos that communicate brand identity across
-                      industries—from restaurants to apparel and podcasts. Each mark balances
-                      clarity, symbolism, and adaptability for print, digital, and product use.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Logo design, brand identity, visual storytelling, mockup creation.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Brand Set</div>
-                    <strong>Grass Monkey • Cowboy Steakhouse • Alienated Apparel • Kraken Construction • Soul Focus</strong>
-                    <p>
-                      Logos built around typography, iconography, and texture to match each client’s tone and market.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Applications</div>
-                    <strong>Packaging &amp; mockups</strong>
-                    <p>
-                      Translated logos into product and environmental mockups to show real-world impact.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== OTHER – CAMPAIGN 1 / PROJECT 2 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="other"
-                 data-campaign="1"
-                 data-project="2">
-              <div class="portfolio-meta-row">
-                <div>Personal branding • Portfolio identity</div>
-                <div class="portfolio-meta-right">
-                  <span>AB3 Graphics</span>
-                  <span>Ongoing</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>AB3 Personal Brand System</h4>
-                    <p>
-                      Built the AB3 visual language spanning logo mark, color system, typography,
-                      and motion-inspired gradients. Designed to feel technical, cinematic, and
-                      adaptable across print, web, and animation projects.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Brand strategy, logo refinements, UI layout experiments, and motion-oriented graphic exploration.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">System</div>
-                    <strong>Color &amp; typography</strong>
-                    <p>
-                      Electric blues and deep navy backgrounds paired with tight, all-caps type for
-                      headers and supporting body weights.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Usage</div>
-                    <strong>Portfolio &amp; presentation decks</strong>
-                    <p>
-                      Applied across resume layouts, web prototypes, and presentation mockups for
-                      consistent personal branding.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-            <!-- ==================== OTHER – CAMPAIGN 2 / PROJECT 1 ==================== -->
-            <div class="portfolio-panel"
-                 data-category="other"
-                 data-campaign="2"
-                 data-project="1">
-              <div class="portfolio-meta-row">
-                <div>Storyboard &amp; animation tests • Web-based motion</div>
-                <div class="portfolio-meta-right">
-                  <span>Personal Work</span>
-                  <span>Ongoing</span>
-                </div>
-              </div>
-
-              <div class="portfolio-layout">
-                <div class="portfolio-primary">
-                  <div>
-                    <h4>Animation &amp; Storyboard Experiments</h4>
-                    <p>
-                      Experimented with web-ready storyboard panels, HTML/CSS-based motion,
-                      and anime-influenced compositions. Focus is on readable, cinematic
-                      sequences that can double as pitch frames or motion prototypes.
-                    </p>
-                  </div>
-                  <div>
-                    <small>
-                      Roles: Layout, pacing, character posing, and technical exploration for code-driven animations.
-                    </small>
-                  </div>
-                </div>
-
-                <div class="portfolio-secondary-grid">
-                  <div class="mini-card">
-                    <div class="mini-card-title">Format</div>
-                    <strong>Panel-driven narratives</strong>
-                    <p>
-                      Sequences built as panels for scrolling experiences, with motion cues
-                      translated into CSS/JS animation notes.
-                    </p>
-                  </div>
-                  <div class="mini-card">
-                    <div class="mini-card-title">Exploration</div>
-                    <strong>Hybrid design &amp; code</strong>
-                    <p>
-                      Combines illustration thinking with front-end experiments to test how
-                      portfolio pieces behave interactively.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-<div class="portfolio-footer-row">
-  <!-- UP: previous job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-prev"
-          aria-label="Previous company">
-    <span class="icon">↑</span>
-  </button>
-
-  <!-- DOWN: next job filter -->
-  <button class="portfolio-arrow"
-          data-dir="panel-next"
-          aria-label="Next company">
-    <span class="icon">↓</span>
-  </button>
-
-  <!-- LEFT: previous campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="prev"
-          aria-label="Previous project">
-    <span class="icon">←</span>
-  </button>
-
-  <!-- RIGHT: next campaign/project in this job -->
-  <button class="portfolio-arrow"
-          data-dir="next"
-          aria-label="Next project">
-    <span class="icon">→</span>
-  </button>
-</div>
-
-
-          <a href="#contact" class="section-arrow" aria-label="Scroll back to contact section">↑</a>
+          <!--
+            To add more panels:
+            - Copy the .portfolio-panel block above
+            - Change data-category / data-campaign / data-project
+            - Adjust headings, text, images, alt text, and captions
+          -->
         </section>
-
-        <div class="contact-footer">
-          <strong>Availability:</strong> Open to full-time creative roles and select freelance collaborations in design, animation, and medical product marketing.
-        </div>
       </div>
     </main>
   </div>
 
-  <div class="floating-contact" id="floating-contact">
-    <div class="floating-contact-header">
-      <p class="hero-meta-label">Connect</p>
-      <button class="floating-close" type="button" aria-label="Hide contact panel">×</button>
+  <!-- LIGHTBOX OVERLAY -->
+  <div id="lightbox-overlay">
+    <div class="lightbox-inner">
+      <img id="lightbox-image" src="" alt="">
+      <div id="lightbox-caption"></div>
     </div>
-
-    <p class="social-note">
-      Are you a future employer, client, and/or colleague? Let's get in touch.
-    </p>
-
-    <a class="hero-cta"
-       href="mailto:ab3graphics@gmail.com?subject=AB3%20Graphics%20Inquiry">
-      <span>Let’s Talk</span>
-      <span>↗</span>
-    </a>
   </div>
 
-  <!-- Panel zoom overlay (full panel) -->
+  <!-- PANEL ZOOM OVERLAY -->
   <div class="panel-overlay" id="panelOverlay">
     <div class="panel-overlay-inner">
-      <button class="panel-overlay-close" type="button" aria-label="Close enlarged view">×</button>
+      <button class="panel-overlay-close" id="panelOverlayClose" aria-label="Close expanded panel">×</button>
       <div class="panel-overlay-content" id="panelOverlayContent"></div>
     </div>
   </div>
 
-<!-- Image lightbox overlay (full-resolution artwork) -->
-<div id="lightbox-overlay">
-  <div class="lightbox-inner">
-    <img id="lightbox-image" src="" alt="">
-
-    <!-- NEW: text details / caption for enlarged images -->
-    <div id="lightbox-caption">
-      <!-- Filled dynamically from the clicked thumbnail -->
-    </div>
-  </div>
-</div>
-
-
   <script>
-    // ==========================================================
-    // STEP A – REVEAL ANIMATIONS ON SCROLL
-    // ==========================================================
-    const revealEls = document.querySelectorAll('.reveal');
+    document.addEventListener('DOMContentLoaded', function () {
+      /* ---------------------------
+         TOP NAV SMOOTH SCROLL
+         --------------------------- */
+      const navLinks = document.querySelectorAll('.top-nav-links a[data-target]');
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          const targetId = link.getAttribute('data-target');
+          const section = document.getElementById(targetId);
+          if (section) {
+            e.preventDefault();
+            section.scrollIntoView({ behavior: 'smooth' });
+            navLinks.forEach(a => a.classList.toggle('active', a === link));
+          }
+        });
+      });
 
-    function handleScrollReveal() {
-      const triggerY = window.innerHeight * 0.88;
-      revealEls.forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if (rect.top < triggerY) {
-          el.classList.add('visible');
+      /* ---------------------------
+         SCROLL REVEAL
+         --------------------------- */
+      const revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+
+        revealEls.forEach(el => observer.observe(el));
+      } else {
+        revealEls.forEach(el => el.classList.add('visible'));
+      }
+
+      /* ---------------------------
+         LIGHTBOX FOR THUMBNAILS
+         --------------------------- */
+      const lightboxOverlay = document.getElementById('lightbox-overlay');
+      const lightboxImg = document.getElementById('lightbox-image');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+
+      function openLightbox(imgEl) {
+        const full = imgEl.dataset.full || imgEl.src;
+        const caption = imgEl.dataset.caption || imgEl.alt || '';
+        lightboxImg.src = full;
+        lightboxImg.alt = imgEl.alt || '';
+        lightboxCaption.textContent = caption;
+        lightboxOverlay.classList.add('active');
+      }
+
+      function closeLightbox() {
+        lightboxOverlay.classList.remove('active');
+        lightboxImg.src = '';
+        lightboxCaption.textContent = '';
+      }
+
+      document.querySelectorAll('.portfolio-thumb').forEach(img => {
+        img.addEventListener('click', e => {
+          e.stopPropagation(); // don't trigger panel zoom
+          openLightbox(img);
+        });
+      });
+
+      lightboxOverlay.addEventListener('click', e => {
+        if (e.target === lightboxOverlay) {
+          closeLightbox();
         }
       });
-    }
 
-    window.addEventListener('scroll', handleScrollReveal);
-    handleScrollReveal();
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        }
+      });
 
-  // ==========================================================
-// STEP B – PORTFOLIO STATE SETUP
-// ==========================================================
-const filterButtons = document.querySelectorAll('.filter-btn');
-const panels = document.querySelectorAll('.portfolio-panel');
+      /* ---------------------------
+         PANEL ZOOM OVERLAY
+         --------------------------- */
+      const panelOverlay = document.getElementById('panelOverlay');
+      const panelOverlayContent = document.getElementById('panelOverlayContent');
+      const panelOverlayClose = document.getElementById('panelOverlayClose');
 
-// JOBS (categories) in the order of the filter buttons
-const categories = Array.from(filterButtons).map(btn => btn.dataset.filter);
-
-// ==========================================================
-// STEP C – CORE FUNCTION: JUMP TO A SPECIFIC PANEL
-// ==========================================================
-function scrollToProject(category, campaignIndex, projectIndex) {
-  const panelsInCampaign = Array
-    .from(panels)
-    .filter(p =>
-      p.dataset.category === category &&
-      Number(p.dataset.campaign) === Number(campaignIndex)
-    )
-    .sort((a, b) => Number(a.dataset.project) - Number(b.dataset.project));
-
-  if (panelsInCampaign.length === 0) return;
-
-  let targetPanel = panelsInCampaign.find(
-    p => Number(p.dataset.project) === Number(projectIndex)
-  );
-
-  if (!targetPanel) {
-    targetPanel = panelsInCampaign[0];
-  }
-
-  panels.forEach(panel => {
-    const isTarget = panel === targetPanel;
-    panel.classList.toggle('active', isTarget);
-    panel.style.display = isTarget ? 'block' : 'none';
-  });
-
-  targetPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
-// ==========================================================
-// STEP D – FILTER BUTTONS (JOBS)
-// ==========================================================
-filterButtons.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const filter = btn.dataset.filter;
-
-    filterButtons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-
-    // Reset to campaign 1 / project 1 for that job
-    scrollToProject(filter, 1, 1);
-  });
-});
-
-// ==========================================================
-// STEP E – ARROW NAVIGATION (CUSTOM JOB + PROJECT SYSTEM)
-// ==========================================================
-
-// IMPORTANT: Jobs must be in this order for UP/DOWN to work
-const jobOrder = ["ctl", "diesel", "newmark", "mimaki", "other"];
-
-document.querySelectorAll('.portfolio-arrow').forEach(btn => {
-  btn.addEventListener('click', e => {
-    e.stopPropagation();
-    const dir = btn.dataset.dir;
-    const currentPanel = btn.closest('.portfolio-panel');
-    if (!currentPanel) return;
-
-    const category = currentPanel.dataset.category;
-    const campaign = Number(currentPanel.dataset.campaign);
-    const project  = Number(currentPanel.dataset.project);
-
-    const panelsInJob = Array.from(panels)
-      .filter(p => p.dataset.category === category);
-
-    // =============================
-    // LEFT / RIGHT → PROJECT SWITCH
-    // =============================
-    if (dir === "prev" || dir === "next") {
-      const panelsInCampaign = panelsInJob
-        .filter(p => Number(p.dataset.campaign) === campaign)
-        .sort((a, b) => Number(a.dataset.project) - Number(b.dataset.project));
-
-      if (!panelsInCampaign.length) return;
-
-      const projectList = panelsInCampaign.map(
-        p => Number(p.dataset.project)
-      ).sort((a,b)=>a-b);
-
-      const minProject = projectList[0];
-      const maxProject = projectList[projectList.length - 1];
-
-      let newProject = project;
-
-      if (dir === "next") {
-        newProject = (project >= maxProject) ? minProject : project + 1;
-      } else {
-        newProject = (project <= minProject) ? maxProject : project - 1;
-      }
-
-      scrollToProject(category, campaign, newProject);
-      return;
-    }
-
-    // =============================
-    // UP / DOWN → JOB SWITCH
-    // =============================
-    if (dir === "panel-prev" || dir === "panel-next") {
-      const currentIndex = jobOrder.indexOf(category);
-      if (currentIndex === -1) return;
-
-      let newIndex;
-
-      if (dir === "panel-prev") {
-        newIndex = (currentIndex - 1 + jobOrder.length) % jobOrder.length;
-      } else {
-        newIndex = (currentIndex + 1) % jobOrder.length;
-      }
-
-      const newJob = jobOrder[newIndex];
-
-      // Highlight correct job filter button
-      filterButtons.forEach(b => b.classList.remove('active'));
-      const btnToActivate = document.querySelector(
-        `.filter-btn[data-filter="${newJob}"]`
-      );
-      if (btnToActivate) btnToActivate.classList.add('active');
-
-      // Find first available panel in new job
-      const jobPanels = Array.from(panels).filter(
-        p => p.dataset.category === newJob
-      );
-
-      if (!jobPanels.length) return;
-
-      const campaigns = [...new Set(jobPanels.map(
-        p => Number(p.dataset.campaign)
-      ))].sort((a,b)=>a-b);
-
-      const firstCampaign = campaigns[0];
-
-      const projects = jobPanels
-        .filter(p => Number(p.dataset.campaign) === firstCampaign)
-        .map(p => Number(p.dataset.project))
-        .sort((a,b)=>a-b);
-
-      const firstProject = projects[0];
-
-      scrollToProject(newJob, firstCampaign, firstProject);
-    }
-  });
-});
-
-// ==========================================================
-// STEP F – INITIAL VIEW (FIRST FILTER'S FIRST PANEL)
-// ==========================================================
-const initialFilterBtn = document.querySelector('.filter-btn.active') || filterButtons[0];
-if (initialFilterBtn) {
-  const initialCategory = initialFilterBtn.dataset.filter;
-  scrollToProject(initialCategory, 1, 1);
-}
-
-
-    // ==========================================================
-    // STEP G – LIGHTBOX OVERLAY (PANEL ZOOM)
-    // ==========================================================
-    const overlay = document.getElementById('panelOverlay');
-    const overlayContent = document.getElementById('panelOverlayContent');
-    const closeOverlayBtn = document.querySelector('.panel-overlay-close');
-
-    panels.forEach(panel => {
-      panel.addEventListener('click', e => {
-        // Ignore clicks on nav arrows or thumbnail bar – those should navigate, not zoom
-        if (e.target.closest('.portfolio-arrow')) return;
-        if (e.target.closest('.portfolio-thumb-bar')) return;
-
-        overlayContent.innerHTML = '';
+      function openPanelOverlay(panel) {
+        panelOverlayContent.innerHTML = '';
         const clone = panel.cloneNode(true);
-        clone.classList.remove('active');
-        overlayContent.appendChild(clone);
-        overlay.classList.add('open');
-      });
-    });
-
-    closeOverlayBtn.addEventListener('click', () => {
-      overlay.classList.remove('open');
-    });
-
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) {
-        overlay.classList.remove('open');
+        clone.classList.remove('active', 'hidden');
+        panelOverlayContent.appendChild(clone);
+        panelOverlay.classList.add('open');
       }
-    });
 
-    // ==========================================================
-    // STEP H – THUMBNAILS → GRID EMPHASIS
-    // ==========================================================
-    function setMainFromThumb(thumb) {
-      const grid =
-        thumb.closest('.portfolio-thumb-bar') ||
-        thumb.closest('.portfolio-image-grid');
+      function closePanelOverlayFunc() {
+        panelOverlay.classList.remove('open');
+        panelOverlayContent.innerHTML = '';
+      }
 
-      if (!grid) return;
-
-      grid.querySelectorAll('.portfolio-thumb').forEach(t => {
-        t.classList.remove('active', 'expanded');
+      document.querySelectorAll('.portfolio-panel').forEach(panel => {
+        panel.addEventListener('click', e => {
+          // ignore clicks coming from thumbnails (already handled)
+          if (e.target.closest('.portfolio-thumb')) return;
+          openPanelOverlay(panel);
+        });
       });
 
-      thumb.classList.add('active', 'expanded');
-    }
-
-    // We'll attach click handler later, after lightbox helpers are defined.
-
-    // ==========================================================
-    // STEP I – FLOATING CONTACT CLOSE
-    // ==========================================================
-    const floatingContact = document.getElementById('floating-contact');
-    const floatingClose = document.querySelector('.floating-close');
-    floatingClose.addEventListener('click', () => {
-      floatingContact.classList.add('hidden');
-    });
-
-    // ==========================================================
-    // STEP J – TOP NAV ACTIVE STATE
-    // ==========================================================
-    const navLinks = document.querySelectorAll('.top-nav-links a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
+      panelOverlayClose.addEventListener('click', closePanelOverlayFunc);
+      panelOverlay.addEventListener('click', e => {
+        if (e.target === panelOverlay) {
+          closePanelOverlayFunc();
+        }
       });
-    });
 
-    // ==========================================================
-    // STEP K – IMAGE LIGHTBOX (FULL-RES THUMBNAIL VIEW)
-    // ==========================================================
-const lightboxOverlay  = document.getElementById("lightbox-overlay");
-const lightboxImage    = document.getElementById("lightbox-image");
-const lightboxCaption  = document.getElementById("lightbox-caption");
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+          closePanelOverlayFunc();
+        }
+      });
 
-function openLightbox(src, caption = "") {
-  lightboxImage.src = src;
-  lightboxImage.alt = caption || "";
-  lightboxCaption.textContent = caption;
-  lightboxOverlay.classList.add("active");
-}
+      /* ---------------------------
+         PORTFOLIO NAV LOGIC
+         --------------------------- */
+      const panels = Array.from(document.querySelectorAll('.portfolio-panel'));
+      if (!panels.length) return;
 
-function closeLightbox() {
-  lightboxOverlay.classList.remove("active");
-  setTimeout(() => {
-    lightboxImage.src = "";
-    lightboxCaption.textContent = "";
-  }, 200);
-}
+      const jobOrder = ['ctl', 'diesel', 'newmark', 'mimaki', 'other'];
+      const jobLabels = {
+        ctl: 'CTL Amedica',
+        diesel: 'Diesel Displays',
+        newmark: 'Newmark Real Estate',
+        mimaki: 'Mimaki USA',
+        other: 'Other Projects'
+      };
 
-    //  - Clicking a thumbnail:
-    //  - Emphasize it in the grid
-    //  - Open it in the lightbox with text details
-document.addEventListener('click', e => {
-  const thumb = e.target.closest('.portfolio-thumb');
-  if (!thumb) return;
+      // Build a map: job -> campaigns -> projects
+      const map = {};
+      panels.forEach(panel => {
+        const job = panel.dataset.category || 'other';
+        const campaign = Number(panel.dataset.campaign || '1');
+        const project = Number(panel.dataset.project || '1');
 
-  e.stopPropagation(); // don't trigger panel zoom
-  setMainFromThumb(thumb);
+        if (!map[job]) {
+          map[job] = {
+            campaigns: {},
+            campaignList: []
+          };
+        }
 
-  const full     = thumb.dataset.full || thumb.src;
-  const caption  = thumb.dataset.caption || thumb.alt || "";
-  openLightbox(full, caption);
-});
+        if (!map[job].campaigns[campaign]) {
+          map[job].campaigns[campaign] = { projects: [] };
+          map[job].campaignList.push(campaign);
+        }
 
-    // Hover to preview emphasis on desktop (no lightbox)
-    document.addEventListener('mouseenter', e => {
-      const thumb = e.target.closest('.portfolio-thumb');
-      if (!thumb) return;
-      setMainFromThumb(thumb);
-    }, true);
+        if (!map[job].campaigns[campaign].projects.includes(project)) {
+          map[job].campaigns[campaign].projects.push(project);
+          map[job].campaigns[campaign].projects.sort((a, b) => a - b);
+        }
+      });
 
-    // Clicking outside the image closes the lightbox
-    lightboxOverlay.addEventListener('click', e => {
-      if (e.target === lightboxOverlay) {
-        closeLightbox();
+      Object.values(map).forEach(job => {
+        job.campaignList.sort((a, b) => a - b);
+      });
+
+      let currentJob = jobOrder.find(j => map[j]) || Object.keys(map)[0];
+      let currentCampaign = map[currentJob].campaignList[0];
+      let currentProject = map[currentJob].campaigns[currentCampaign].projects[0];
+
+      const navPathEl = document.getElementById('portfolioNavPath');
+      const currentJobEl = document.getElementById('currentJob');
+      const currentCampaignEl = document.getElementById('currentCampaign');
+      const currentEventEl = document.getElementById('currentEvent');
+      const prevJobBtn = document.getElementById('prevJob');
+      const nextJobBtn = document.getElementById('nextJob');
+      const prevCampaignBtn = document.getElementById('prevCampaign');
+      const nextCampaignBtn = document.getElementById('nextCampaign');
+      const prevEventBtn = document.getElementById('prevEvent');
+      const nextEventBtn = document.getElementById('nextEvent');
+      const jobPills = Array.from(document.querySelectorAll('.nav-pill[data-job]'));
+
+      function updatePortfolioUI() {
+        panels.forEach(panel => {
+          const match =
+            panel.dataset.category === currentJob &&
+            Number(panel.dataset.campaign) === currentCampaign &&
+            Number(panel.dataset.project) === currentProject;
+          panel.classList.toggle('hidden', !match);
+          panel.classList.toggle('active', match);
+        });
+
+        jobPills.forEach(p => {
+          p.classList.toggle('is-active', p.dataset.job === currentJob);
+        });
+
+        const jobName = jobLabels[currentJob] || currentJob;
+        if (navPathEl) {
+          navPathEl.textContent = `${jobName} · Campaign ${currentCampaign} · Event ${currentProject}`;
+        }
+        if (currentJobEl) currentJobEl.textContent = jobName;
+        if (currentCampaignEl) currentCampaignEl.textContent = `Campaign ${currentCampaign}`;
+        if (currentEventEl) currentEventEl.textContent = `Event ${currentProject}`;
       }
-    });
 
-    // ESC closes lightbox
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        closeLightbox();
+      updatePortfolioUI();
+
+      // Job tab click
+      jobPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          const job = pill.dataset.job;
+          if (!map[job]) return;
+          currentJob = job;
+          currentCampaign = map[job].campaignList[0];
+          currentProject = map[job].campaigns[currentCampaign].projects[0];
+          updatePortfolioUI();
+        });
+      });
+
+      // Step helpers
+      function stepJob(dir) {
+        const availableJobs = jobOrder.filter(j => map[j]);
+        if (!availableJobs.length) return;
+        let idx = availableJobs.indexOf(currentJob);
+        if (idx === -1) idx = 0;
+        idx = (idx + dir + availableJobs.length) % availableJobs.length;
+        const job = availableJobs[idx];
+        currentJob = job;
+        currentCampaign = map[job].campaignList[0];
+        currentProject = map[job].campaigns[currentCampaign].projects[0];
+        updatePortfolioUI();
       }
+
+      function stepCampaign(dir) {
+        const jobData = map[currentJob];
+        if (!jobData) return;
+        const clist = jobData.campaignList;
+        let idx = clist.indexOf(currentCampaign);
+        if (idx === -1) idx = 0;
+        idx += dir;
+        if (idx < 0 || idx >= clist.length) return;
+        currentCampaign = clist[idx];
+        const projList = jobData.campaigns[currentCampaign].projects;
+        currentProject = projList[0];
+        updatePortfolioUI();
+      }
+
+      function stepEvent(dir) {
+        const jobData = map[currentJob];
+        if (!jobData) return;
+        const projList = jobData.campaigns[currentCampaign].projects;
+        let idx = projList.indexOf(currentProject);
+        if (idx === -1) idx = 0;
+        idx += dir;
+        if (idx < 0 || idx >= projList.length) return;
+        currentProject = projList[idx];
+        updatePortfolioUI();
+      }
+
+      prevJobBtn && prevJobBtn.addEventListener('click', () => stepJob(-1));
+      nextJobBtn && nextJobBtn.addEventListener('click', () => stepJob(1));
+      prevCampaignBtn && prevCampaignBtn.addEventListener('click', () => stepCampaign(-1));
+      nextCampaignBtn && nextCampaignBtn.addEventListener('click', () => stepCampaign(1));
+      prevEventBtn && prevEventBtn.addEventListener('click', () => stepEvent(-1));
+      nextEventBtn && nextEventBtn.addEventListener('click', () => stepEvent(1));
     });
   </script>
 </body>
